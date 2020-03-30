@@ -1,0 +1,205 @@
+CREATE TABLE AppConstants (
+    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+    Constant varchar(255),
+	Value varchar(255)
+);
+
+INSERT INTO AppConstants VALUES (default,'Company', 'Reshimgathi Matrimony')
+
+
+-----------------------------------------------------------
+
+--INSERT INTO user (id, login, password) VALUES (1, 'admin', HASHBYTES('MD5', 'admin'));
+--select HASHBYTES('MD5', 'amit')
+
+CREATE TABLE LoginEvents (
+    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+    LoginId varchar(255),
+    Password varchar(255)
+	LastLoginDate varchar(255),
+	FailedAttempts BIT NULL DEFAULT 0,
+	IPAddress varchar(255),
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+-----------------------------------------------------------
+
+
+CREATE TABLE Login (
+    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+    UserProfileIid varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+    Username varchar(255),
+	Password varchar(255),
+	IsVerified BIT  NOT NULL  DEFAULT 0,
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+//last login date.
+
+INSERT INTO Login VALUES (default, 'amit', 'amit', 0, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+
+
+
+----------------------------------------------
+
+
+CREATE TABLE UserProfileDetails(
+	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	RegistrationId varchar(255),
+	FirstName varchar(255),
+	MiddleName varchar(255),
+	LastName varchar(255),
+	MobileNumber int,
+	IsMobileVerified BIT NOT NULL DEFAULT 0,
+	AlternateMobileNumber int,
+	IsAlternateMobileVerified BIT NOT NULL DEFAULT 0,
+	EmailId varchar(255),
+	IsEmailVerified BIT NOT NULL DEFAULT 0,
+	Status tinyint,
+	Religion varchar(255),
+	Caste varchar(255),
+	SubCaste varchar(255),
+	MartialStatus tinyint,
+	DOB DATE,
+	height smallint,
+	weight smallint,
+	BloodGroup varchar(10),
+	Complexion varchar(50),
+	PhysicalDisability BIT NOT NULL DEFAULT 0,
+	DisabilityDetails varchar(255),
+	Diet BIT NOT NULL DEFAULT 0,
+	IsSpectacles BIT NOT NULL DEFAULT 0,
+	Rashi varchar(255),
+	Nakshtra varchar(255),
+	Charan varchar(255),
+	Gan varchar(255),
+	Nadi varchar(255),
+	BirthTime time,
+	BirthPlace varchar(255),
+	Devak varchar(255),
+	Mangal BIT NOT NULL DEFAULT 0,
+	LastEducation varchar(255),
+	EducationStream varchar(255),
+	Occupation varchar(255),
+	OccupationCity varchar(255),
+	OccupationCountry varchar(255),
+	AnnualIncome varchar(255),
+	PanCard varchar(255),
+	AadharCard varchar(255),
+	ResidenceAddress varchar(255),
+	MotherName varchar(255),
+	ParentFullName varchar(255),
+	Brothers tinyint,
+	MarriedBrothers tinyint,
+	Sisters tinyint,
+	MarriedSisters tinyint,
+	ParentsOccupation varchar(255),
+	SurnamesOfRelatives varchar(255),
+	NativeDistrict varchar(255),
+	NativeCity varchar(255),
+	NativeTaluka varchar(255),
+	FamilyWealth varchar(255),
+	PreferredCities varchar(255),
+	ExpectedCaste varchar(255),
+	MaxAgeDifference varchar(255),
+	ExpectedHeightAbove varchar(255),
+	Divorcee BIT NOT NULL DEFAULT 0,
+	ExpectedOccupation varchar(255),
+	ExpectedIncome varchar(255),
+	ExpectedEducation varchar(255),
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+CREATE TABLE UserProfilePictures(
+	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	UserProfileIid varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	ImageURL varchar(255),
+	IsDefaultPicture BIT NOT NULL DEFAULT 0,
+	Status tinyint,
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+----------------------------------------------------------------------
+
+CREATE TABLE RequestContacts(
+	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	RequestFrom varchar(255) varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	RequestTo1 varchar(255),
+	RequestTo2 varchar(255),
+	RequestTo3 varchar(255),
+	RequestTo4 varchar(255),
+	RequestTo5 varchar(255),
+	IsRequestServed  BIT NOT NULL DEFAULT 0,
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+----------------------------------------------------------------------
+ CREATE TABLE Favourites(
+ 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+ 	UserProfileIid varchar(255) varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+ 	FavouriteProfileId varchar(255),
+ 	IsStillFavourite BIT NOT NULL DEFAULT 1,
+ 	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+ 	);
+
+----------------------------------------------------------------------
+
+--//Old Tables below - No use. #Ignore.
+CREATE TABLE RegistrationPhase1 (
+    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+    LoginId Uniqueidentifier,
+    ReshimgathiId varchar(255),
+    FirstName varchar(255),
+	LastName varchar(255),
+	PhoneNumber varchar(25),
+	IsPhoneVerified BIT   NULL   DEFAULT 0,
+	EmailId varchar(255),
+	IsEmailVerified BIT   NULL   DEFAULT 0,
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+
+INSERT INTO RegistrationPhase1 VALUES (default, '97071193-C9A6-4897-B5DC-C7D812CDBA66', 'RM-000000', 'Amit', 'Patange', '7709981177', 0, 'amitpatange88@gmail.com', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+
+
+
+------------------------------------
+
+========================
+
+CREATE FUNCTION dbo.GetLoginDetails ()
+RETURNS TABLE
+AS RETURN 
+	SELECT Id, UserName, Password, UserType, IsVerified, CreateDate, UpdatedDate 
+		FROM Login
+
+
+CREATE PROCEDURE dbo.GetLoginDetailsProc @input VARCHAR(250) = NULL
+AS
+SELECT * FROM GetLoginDetails()
+
+
+drop function GetLoginDetails
+drop procedure GetLoginDetailsProc
+
+	GetLoginDetails 'amit'
+
+
+	SELECT * FROM GetLoginDetails('amit')
+
+	exec GetLoginDetailsProc 'amit'
