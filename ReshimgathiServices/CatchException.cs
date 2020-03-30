@@ -29,7 +29,7 @@ namespace ReshimgathiServices
             //Get the first stack frame
             StackFrame frame = st.GetFrame(0);
 
-            var data = new LogErrorFields
+            var data = new LogErrors
             {
                 UniqueId = Guid.NewGuid(),
                 AppType = Application.WebApi,

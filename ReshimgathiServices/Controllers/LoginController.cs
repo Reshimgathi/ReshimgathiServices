@@ -15,9 +15,7 @@ namespace ReshimgathiServices.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            throw new Exception("Manual exception thrown.");
-
-            //return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5

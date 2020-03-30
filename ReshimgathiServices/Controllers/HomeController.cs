@@ -11,8 +11,6 @@ namespace ReshimgathiServices.Controllers
     {
         public ActionResult Index()
         {
-            //throw new Exception("Manual exception thrown.");
-
             ViewBag.Title = "Home Page";
 
             return View();
