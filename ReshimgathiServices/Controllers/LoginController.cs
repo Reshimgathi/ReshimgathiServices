@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace ReshimgathiServices.Controllers
 {
-    [SnatchException]
     [CatchException]
     public class LoginController : ApiController
     {

@@ -28,7 +28,7 @@ CREATE TABLE LoginEvents (
 
 CREATE TABLE Login (
     Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-    UserProfileIid varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+    UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
     Username varchar(255),
 	Password varchar(255),
 	IsVerified BIT  NOT NULL  DEFAULT 0,
@@ -36,7 +36,7 @@ CREATE TABLE Login (
 	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
 );
 
-//last login date.
+--last login date.
 
 INSERT INTO Login VALUES (default, 'amit', 'amit', 0, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 
@@ -109,21 +109,54 @@ CREATE TABLE UserProfileDetails(
 	ExpectedOccupation varchar(255),
 	ExpectedIncome varchar(255),
 	ExpectedEducation varchar(255),
+	IsLiveOnBoarding BIT NOT NULL DEFAULT 1,
+	IsPaidProfile  BIT NOT NULL DEFAULT 0,
+	FreeTrialUser  BIT NOT NULL DEFAULT 1,
 	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
 	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
 );
 
 
+ALTER TABLE UserProfileDetails
+    ADD 
+        IsLiveOnBoarding BIT NOT NULL DEFAULT 1,
+		IsPaidProfile  BIT NOT NULL DEFAULT 0;
+
+--7 Days Free trial Customer
+ALTER TABLE UserProfileDetails
+    MODIFY COLUMN
+    	FreeTrialUser  BIT NOT NULL DEFAULT 0;
 
 
+----------------------------------------------------------------------
 
+CREATE TABLE PaymentInformation(
+	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	PaymentStartDate datetime,
+	PaymentEndDate datetime,
+	AmountPaid int,
+	UserProfileExpired BIT NOT NULL DEFAULT 0,
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE MembershipPlans(
+	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	NoOfMonths tinyint,
+	Fees int,
+	IsPlanExpired BIT NOT NULL DEFAULT 0,
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
 
 ----------------------------------------------------------------------
 
 
 CREATE TABLE UserProfilePictures(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	UserProfileIid varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	ImageURL varchar(255),
 	IsDefaultPicture BIT NOT NULL DEFAULT 0,
 	Status tinyint,
@@ -135,7 +168,7 @@ CREATE TABLE UserProfilePictures(
 
 CREATE TABLE RequestContacts(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	RequestFrom varchar(255) varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	RequestFrom UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	RequestTo1 varchar(255),
 	RequestTo2 varchar(255),
 	RequestTo3 varchar(255),
@@ -149,12 +182,12 @@ CREATE TABLE RequestContacts(
 ----------------------------------------------------------------------
  CREATE TABLE Favourites(
  	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
- 	UserProfileIid varchar(255) varchar(255) FOREIGN KEY REFERENCES UserProfileDetails(Id),
+ 	UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
  	FavouriteProfileId varchar(255),
  	IsStillFavourite BIT NOT NULL DEFAULT 1,
  	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
 	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
- 	);
+ );
 
 ----------------------------------------------------------------------
 
