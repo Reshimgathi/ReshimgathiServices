@@ -1,41 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
+using ReshimgathiServices.Business;
+using ReshimgathiServices.Requests;
+using ReshimgathiServices.Responses;
 
 namespace ReshimgathiServices.Controllers
 {
+    /// <summary>
+    /// This controller helps to manage all types of Login operations.
+    /// </summary>
+    [RoutePrefix("api/login")]
     [CatchException]
     public class LoginController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        /// <summary>
+        /// Verify Username and password.
+        /// </summary>
+        /// <returns></returns>
+        [Route("verify")]
+        [HttpPost]
+        public HttpResponseMessage VerifyLoginDetails(LoginRequest req)
         {
-            return new string[] { "value1", "value2" };
-        }
+            LoginResponse lor = new LoginResponse();
+            bool loginStatus = false;
+            try
+            {
+                LoginOperations loginOp = new LoginOperations();
+                var loginDetails = loginOp.VerifyLoginCreds(req.Username, req.Password);
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+                if(loginDetails != null)
+                {
+                    loginStatus = true;
+                }
+                
+                if (loginStatus)
+                {
+                    UserProfileOperations uop = new UserProfileOperations();
+                    lor.Message = "User found. Welcome to Reshimgathi Matrimony !!";
+                    lor.ResponseObj = new LoginSuccess()
+                    {
+                        LoginStatus = true,
+                        UserProfileDetails = uop.GetUserProfileDetails(loginDetails.UserProfileId)
+                    };
+                } 
+                else
+                {
+                    lor.Message = "User Not Found !! Please try with correct login Creds.";
+                    lor.ResponseObj = new LoginSuccess()
+                    {
+                        LoginStatus = false,
+                        UserProfileDetails = null
+                    };
+                } 
 
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
+                lor.AdditionalMessage = "Additional note found here.";
+                lor.HttpStatus = HttpStatusCode.OK.ToString();
+                lor.Success = true;
+            }
+            catch(Exception e)
+            {
+                lor.Success = false;
+                lor.Message = "Internal Server error. Please contact admin or try after some time.";
+                lor.AdditionalMessage = e.Message;
+                lor.HttpStatus = HttpStatusCode.InternalServerError.ToString();
+                lor.ResponseObj = new LoginSuccess()
+                {
+                    LoginStatus = false,
+                    UserProfileDetails = null
+                };
+            }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+            return Request.CreateResponse(HttpStatusCode.OK, lor);
         }
     }
 }

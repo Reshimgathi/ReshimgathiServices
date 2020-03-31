@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ReshimgathiMatrimonyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="GetLoginDetails_Result">
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserType" Type="Boolean" />
+    <Property Name="IsVerified" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" />
+    <Property Name="UpdatedDate" Type="DateTime" />
+  </ComplexType>
+  <EntityContainer Name="ReshimgathiDBContext" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="GetLoginDetails" IsComposable="true" ReturnType="Collection(ReshimgathiMatrimonyModel.GetLoginDetails_Result)" />
+    <FunctionImport Name="GetLoginDetailsProc">
+      <Parameter Name="input" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Favourites" EntityType="ReshimgathiMatrimonyModel.Favourite" />
+    <EntitySet Name="Logins" EntityType="ReshimgathiMatrimonyModel.Login" />
+    <EntitySet Name="MembershipPlans" EntityType="ReshimgathiMatrimonyModel.MembershipPlan" />
+    <EntitySet Name="PaymentInformations" EntityType="ReshimgathiMatrimonyModel.PaymentInformation" />
+    <EntitySet Name="RequestContacts" EntityType="ReshimgathiMatrimonyModel.RequestContact" />
+    <EntitySet Name="UserProfileDetails" EntityType="ReshimgathiMatrimonyModel.UserProfileDetail" />
+    <EntitySet Name="UserProfilePictures" EntityType="ReshimgathiMatrimonyModel.UserProfilePicture" />
+    <AssociationSet Name="FK__Favourite__UserP__5D95E53A" Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A">
+      <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+      <End Role="Favourite" EntitySet="Favourites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Login__UserProfi__3D2915A8" Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8">
+      <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+      <End Role="Login" EntitySet="Logins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentIn__UserP__43D61337" Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337">
+      <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+      <End Role="PaymentInformation" EntitySet="PaymentInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RequestCo__Reque__56E8E7AB" Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB">
+      <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+      <End Role="RequestContact" EntitySet="RequestContacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserProfi__UserP__503BEA1C" Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C">
+      <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+      <End Role="UserProfilePicture" EntitySet="UserProfilePictures" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Favourite">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserProfileId" Type="Guid" />
+    <Property Name="FavouriteProfileId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsStillFavourite" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A" FromRole="Favourite" ToRole="UserProfileDetail" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserProfileId" Type="Guid" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8" FromRole="Login" ToRole="UserProfileDetail" />
+  </EntityType>
+  <EntityType Name="MembershipPlan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="NoOfMonths" Type="Byte" />
+    <Property Name="Fees" Type="Int32" />
+    <Property Name="IsPlanExpired" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PaymentInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserProfileId" Type="Guid" />
+    <Property Name="PaymentStartDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentEndDate" Type="DateTime" Precision="3" />
+    <Property Name="AmountPaid" Type="Int32" />
+    <Property Name="UserProfileExpired" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337" FromRole="PaymentInformation" ToRole="UserProfileDetail" />
+  </EntityType>
+  <EntityType Name="RequestContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="RequestFrom" Type="Guid" />
+    <Property Name="RequestTo1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RequestTo2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RequestTo3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RequestTo4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RequestTo5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsRequestServed" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB" FromRole="RequestContact" ToRole="UserProfileDetail" />
+  </EntityType>
+  <EntityType Name="UserProfileDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="RegistrationId" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+    <Property Name="AlternateMobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsAlternateMobileVerified" Type="Boolean" Nullable="false" />
+    <Property Name="EmailId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="Religion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Caste" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SubCaste" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MartialStatus" Type="Byte" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="height" Type="Int16" />
+    <Property Name="weight" Type="Int16" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhysicalDisability" Type="Boolean" Nullable="false" />
+    <Property Name="DisabilityDetails" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Diet" Type="Boolean" Nullable="false" />
+    <Property Name="IsSpectacles" Type="Boolean" Nullable="false" />
+    <Property Name="Rashi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Nakshtra" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Charan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Nadi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BirthTime" Type="Time" Precision="7" />
+    <Property Name="BirthPlace" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Devak" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Mangal" Type="Boolean" Nullable="false" />
+    <Property Name="LastEducation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EducationStream" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Occupation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OccupationCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OccupationCountry" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AnnualIncome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PanCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AadharCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ResidenceAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MotherName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ParentFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Brothers" Type="Byte" />
+    <Property Name="MarriedBrothers" Type="Byte" />
+    <Property Name="Sisters" Type="Byte" />
+    <Property Name="MarriedSisters" Type="Byte" />
+    <Property Name="ParentsOccupation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SurnamesOfRelatives" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NativeDistrict" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NativeCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NativeTaluka" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FamilyWealth" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PreferredCities" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExpectedCaste" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MaxAgeDifference" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExpectedHeightAbove" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Divorcee" Type="Boolean" Nullable="false" />
+    <Property Name="ExpectedOccupation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExpectedIncome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ExpectedEducation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsLiveOnBoarding" Type="Boolean" Nullable="false" />
+    <Property Name="IsPaidProfile" Type="Boolean" Nullable="false" />
+    <Property Name="FreeTrialUser" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Favourites" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A" FromRole="UserProfileDetail" ToRole="Favourite" />
+    <NavigationProperty Name="Logins" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8" FromRole="UserProfileDetail" ToRole="Login" />
+    <NavigationProperty Name="PaymentInformations" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337" FromRole="UserProfileDetail" ToRole="PaymentInformation" />
+    <NavigationProperty Name="RequestContacts" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB" FromRole="UserProfileDetail" ToRole="RequestContact" />
+    <NavigationProperty Name="UserProfilePictures" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C" FromRole="UserProfileDetail" ToRole="UserProfilePicture" />
+  </EntityType>
+  <EntityType Name="UserProfilePicture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserProfileId" Type="Guid" />
+    <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsDefaultPicture" Type="Boolean" Nullable="false" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C" FromRole="UserProfilePicture" ToRole="UserProfileDetail" />
+  </EntityType>
+  <Association Name="FK__Favourite__UserP__5D95E53A">
+    <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+    <End Type="ReshimgathiMatrimonyModel.Favourite" Role="Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfileDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="UserProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Login__UserProfi__3D2915A8">
+    <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+    <End Type="ReshimgathiMatrimonyModel.Login" Role="Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfileDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="UserProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentIn__UserP__43D61337">
+    <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+    <End Type="ReshimgathiMatrimonyModel.PaymentInformation" Role="PaymentInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfileDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentInformation">
+        <PropertyRef Name="UserProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RequestCo__Reque__56E8E7AB">
+    <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+    <End Type="ReshimgathiMatrimonyModel.RequestContact" Role="RequestContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfileDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestContact">
+        <PropertyRef Name="RequestFrom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserProfi__UserP__503BEA1C">
+    <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+    <End Type="ReshimgathiMatrimonyModel.UserProfilePicture" Role="UserProfilePicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfileDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserProfilePicture">
+        <PropertyRef Name="UserProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

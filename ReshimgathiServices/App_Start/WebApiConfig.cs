@@ -11,6 +11,7 @@ namespace ReshimgathiServices
         {
             // Web API configuration and services
             config.Filters.Add(new CatchException());
+            //config.filters.Add(new HandleErrorAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

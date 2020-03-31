@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ReshimgathiMatrimonyModelStoreContainer" CdmEntityContainer="ReshimgathiDBContext">
+    <FunctionImportMapping FunctionName="ReshimgathiMatrimonyModel.Store.GetLoginDetails" FunctionImportName="GetLoginDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ReshimgathiMatrimonyModel.GetLoginDetails_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetLoginDetailsProc" FunctionName="ReshimgathiMatrimonyModel.Store.GetLoginDetailsProc" />
+    <EntitySetMapping Name="Favourites">
+      <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.Favourite">
+        <MappingFragment StoreEntitySet="Favourites">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsStillFavourite" ColumnName="IsStillFavourite" />
+          <ScalarProperty Name="FavouriteProfileId" ColumnName="FavouriteProfileId" />
+          <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MembershipPlans">
+      <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.MembershipPlan">
+        <MappingFragment StoreEntitySet="MembershipPlans">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsPlanExpired" ColumnName="IsPlanExpired" />
+          <ScalarProperty Name="Fees" ColumnName="Fees" />
+          <ScalarProperty Name="NoOfMonths" ColumnName="NoOfMonths" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentInformations">
+      <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.PaymentInformation">
+        <MappingFragment StoreEntitySet="PaymentInformation">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserProfileExpired" ColumnName="UserProfileExpired" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="PaymentEndDate" ColumnName="PaymentEndDate" />
+          <ScalarProperty Name="PaymentStartDate" ColumnName="PaymentStartDate" />
+          <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestContacts">
+      <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.RequestContact">
+        <MappingFragment StoreEntitySet="RequestContacts">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsRequestServed" ColumnName="IsRequestServed" />
+          <ScalarProperty Name="RequestTo5" ColumnName="RequestTo5" />
+          <ScalarProperty Name="RequestTo4" ColumnName="RequestTo4" />
+          <ScalarProperty Name="RequestTo3" ColumnName="RequestTo3" />
+          <ScalarProperty Name="RequestTo2" ColumnName="RequestTo2" />
+          <ScalarProperty Name="RequestTo1" ColumnName="RequestTo1" />
+          <ScalarProperty Name="RequestFrom" ColumnName="RequestFrom" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfileDetails">
+      <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.UserProfileDetail">
+        <MappingFragment StoreEntitySet="UserProfileDetails">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="FreeTrialUser" ColumnName="FreeTrialUser" />
+          <ScalarProperty Name="IsPaidProfile" ColumnName="IsPaidProfile" />
+          <ScalarProperty Name="IsLiveOnBoarding" ColumnName="IsLiveOnBoarding" />
+          <ScalarProperty Name="ExpectedEducation" ColumnName="ExpectedEducation" />
+          <ScalarProperty Name="ExpectedIncome" ColumnName="ExpectedIncome" />
+          <ScalarProperty Name="ExpectedOccupation" ColumnName="ExpectedOccupation" />
+          <ScalarProperty Name="Divorcee" ColumnName="Divorcee" />
+          <ScalarProperty Name="ExpectedHeightAbove" ColumnName="ExpectedHeightAbove" />
+          <ScalarProperty Name="MaxAgeDifference" ColumnName="MaxAgeDifference" />
+          <ScalarProperty Name="ExpectedCaste" ColumnName="ExpectedCaste" />
+          <ScalarProperty Name="PreferredCities" ColumnName="PreferredCities" />
+          <ScalarProperty Name="FamilyWealth" ColumnName="FamilyWealth" />
+          <ScalarProperty Name="NativeTaluka" ColumnName="NativeTaluka" />
+          <ScalarProperty Name="NativeCity" ColumnName="NativeCity" />
+          <ScalarProperty Name="NativeDistrict" ColumnName="NativeDistrict" />
+          <ScalarProperty Name="SurnamesOfRelatives" ColumnName="SurnamesOfRelatives" />
+          <ScalarProperty Name="ParentsOccupation" ColumnName="ParentsOccupation" />
+          <ScalarProperty Name="MarriedSisters" ColumnName="MarriedSisters" />
+          <ScalarProperty Name="Sisters" ColumnName="Sisters" />
+          <ScalarProperty Name="MarriedBrothers" ColumnName="MarriedBrothers" />
+          <ScalarProperty Name="Brothers" ColumnName="Brothers" />
+          <ScalarProperty Name="ParentFullName" ColumnName="ParentFullName" />
+          <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+          <ScalarProperty Name="ResidenceAddress" ColumnName="ResidenceAddress" />
+          <ScalarProperty Name="AadharCard" ColumnName="AadharCard" />
+          <ScalarProperty Name="PanCard" ColumnName="PanCard" />
+          <ScalarProperty Name="AnnualIncome" ColumnName="AnnualIncome" />
+          <ScalarProperty Name="OccupationCountry" ColumnName="OccupationCountry" />
+          <ScalarProperty Name="OccupationCity" ColumnName="OccupationCity" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="EducationStream" ColumnName="EducationStream" />
+          <ScalarProperty Name="LastEducation" ColumnName="LastEducation" />
+          <ScalarProperty Name="Mangal" ColumnName="Mangal" />
+          <ScalarProperty Name="Devak" ColumnName="Devak" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="BirthTime" ColumnName="BirthTime" />
+          <ScalarProperty Name="Nadi" ColumnName="Nadi" />
+          <ScalarProperty Name="Gan" ColumnName="Gan" />
+          <ScalarProperty Name="Charan" ColumnName="Charan" />
+          <ScalarProperty Name="Nakshtra" ColumnName="Nakshtra" />
+          <ScalarProperty Name="Rashi" ColumnName="Rashi" />
+          <ScalarProperty Name="IsSpectacles" ColumnName="IsSpectacles" />
+          <ScalarProperty Name="Diet" ColumnName="Diet" />
+          <ScalarProperty Name="DisabilityDetails" ColumnName="DisabilityDetails" />
+          <ScalarProperty Name="PhysicalDisability" ColumnName="PhysicalDisability" />
+          <ScalarProperty Name="Complexion" ColumnName="Complexion" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+          <ScalarProperty Name="SubCaste" ColumnName="SubCaste" />
+          <ScalarProperty Name="Caste" ColumnName="Caste" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="IsAlternateMobileVerified" ColumnName="IsAlternateMobileVerified" />
+          <ScalarProperty Name="AlternateMobileNumber" ColumnName="AlternateMobileNumber" />
+          <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfilePictures">
+      <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.UserProfilePicture">
+        <MappingFragment StoreEntitySet="UserProfilePictures">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDefaultPicture" ColumnName="IsDefaultPicture" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

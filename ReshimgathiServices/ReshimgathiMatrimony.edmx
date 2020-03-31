@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ReshimgathiMatrimonyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Favourites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="FavouriteProfileId" Type="varchar" MaxLength="255" />
+          <Property Name="IsStillFavourite" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="Username" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MembershipPlans">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NoOfMonths" Type="tinyint" />
+          <Property Name="Fees" Type="int" />
+          <Property Name="IsPlanExpired" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="PaymentStartDate" Type="datetime" />
+          <Property Name="PaymentEndDate" Type="datetime" />
+          <Property Name="AmountPaid" Type="int" />
+          <Property Name="UserProfileExpired" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RequestContacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RequestFrom" Type="uniqueidentifier" />
+          <Property Name="RequestTo1" Type="varchar" MaxLength="255" />
+          <Property Name="RequestTo2" Type="varchar" MaxLength="255" />
+          <Property Name="RequestTo3" Type="varchar" MaxLength="255" />
+          <Property Name="RequestTo4" Type="varchar" MaxLength="255" />
+          <Property Name="RequestTo5" Type="varchar" MaxLength="255" />
+          <Property Name="IsRequestServed" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="sql_server_integers">
+          <Property Name="bigint_col" Type="bigint" />
+          <Property Name="int_col" Type="int" />
+          <Property Name="smallint_col" Type="smallint" />
+          <Property Name="tinyint_col" Type="tinyint" />
+        </EntityType>-->
+        <EntityType Name="UserProfileDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="IsMobileVerified" Type="bit" Nullable="false" />
+          <Property Name="AlternateMobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="IsAlternateMobileVerified" Type="bit" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="255" />
+          <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="Religion" Type="varchar" MaxLength="255" />
+          <Property Name="Caste" Type="varchar" MaxLength="255" />
+          <Property Name="SubCaste" Type="varchar" MaxLength="255" />
+          <Property Name="MartialStatus" Type="tinyint" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="height" Type="smallint" />
+          <Property Name="weight" Type="smallint" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="10" />
+          <Property Name="Complexion" Type="varchar" MaxLength="50" />
+          <Property Name="PhysicalDisability" Type="bit" Nullable="false" />
+          <Property Name="DisabilityDetails" Type="varchar" MaxLength="255" />
+          <Property Name="Diet" Type="bit" Nullable="false" />
+          <Property Name="IsSpectacles" Type="bit" Nullable="false" />
+          <Property Name="Rashi" Type="varchar" MaxLength="255" />
+          <Property Name="Nakshtra" Type="varchar" MaxLength="255" />
+          <Property Name="Charan" Type="varchar" MaxLength="255" />
+          <Property Name="Gan" Type="varchar" MaxLength="255" />
+          <Property Name="Nadi" Type="varchar" MaxLength="255" />
+          <Property Name="BirthTime" Type="time" Precision="7" />
+          <Property Name="BirthPlace" Type="varchar" MaxLength="255" />
+          <Property Name="Devak" Type="varchar" MaxLength="255" />
+          <Property Name="Mangal" Type="bit" Nullable="false" />
+          <Property Name="LastEducation" Type="varchar" MaxLength="255" />
+          <Property Name="EducationStream" Type="varchar" MaxLength="255" />
+          <Property Name="Occupation" Type="varchar" MaxLength="255" />
+          <Property Name="OccupationCity" Type="varchar" MaxLength="255" />
+          <Property Name="OccupationCountry" Type="varchar" MaxLength="255" />
+          <Property Name="AnnualIncome" Type="varchar" MaxLength="255" />
+          <Property Name="PanCard" Type="varchar" MaxLength="255" />
+          <Property Name="AadharCard" Type="varchar" MaxLength="255" />
+          <Property Name="ResidenceAddress" Type="varchar" MaxLength="255" />
+          <Property Name="MotherName" Type="varchar" MaxLength="255" />
+          <Property Name="ParentFullName" Type="varchar" MaxLength="255" />
+          <Property Name="Brothers" Type="tinyint" />
+          <Property Name="MarriedBrothers" Type="tinyint" />
+          <Property Name="Sisters" Type="tinyint" />
+          <Property Name="MarriedSisters" Type="tinyint" />
+          <Property Name="ParentsOccupation" Type="varchar" MaxLength="255" />
+          <Property Name="SurnamesOfRelatives" Type="varchar" MaxLength="255" />
+          <Property Name="NativeDistrict" Type="varchar" MaxLength="255" />
+          <Property Name="NativeCity" Type="varchar" MaxLength="255" />
+          <Property Name="NativeTaluka" Type="varchar" MaxLength="255" />
+          <Property Name="FamilyWealth" Type="varchar" MaxLength="255" />
+          <Property Name="PreferredCities" Type="varchar" MaxLength="255" />
+          <Property Name="ExpectedCaste" Type="varchar" MaxLength="255" />
+          <Property Name="MaxAgeDifference" Type="varchar" MaxLength="255" />
+          <Property Name="ExpectedHeightAbove" Type="varchar" MaxLength="255" />
+          <Property Name="Divorcee" Type="bit" Nullable="false" />
+          <Property Name="ExpectedOccupation" Type="varchar" MaxLength="255" />
+          <Property Name="ExpectedIncome" Type="varchar" MaxLength="255" />
+          <Property Name="ExpectedEducation" Type="varchar" MaxLength="255" />
+          <Property Name="IsLiveOnBoarding" Type="bit" Nullable="false" />
+          <Property Name="IsPaidProfile" Type="bit" Nullable="false" />
+          <Property Name="FreeTrialUser" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserProfilePictures">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="255" />
+          <Property Name="IsDefaultPicture" Type="bit" Nullable="false" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Favourite__UserP__5D95E53A">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Login__UserProfi__3D2915A8">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentIn__UserP__43D61337">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+          <End Role="PaymentInformation" Type="Self.PaymentInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentInformation">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RequestCo__Reque__56E8E7AB">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+          <End Role="RequestContacts" Type="Self.RequestContacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestContacts">
+              <PropertyRef Name="RequestFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserProfi__UserP__503BEA1C">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+          <End Role="UserProfilePictures" Type="Self.UserProfilePictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfilePictures">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetLoginDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="UserName" Type="varchar" MaxLength="255" />
+                <Property Name="Password" Type="varchar" MaxLength="255" />
+                <Property Name="UserType" Type="bit" />
+                <Property Name="IsVerified" Type="bit" />
+                <Property Name="CreateDate" Type="datetime" />
+                <Property Name="UpdatedDate" Type="datetime" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetLoginDetailsProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="input" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ReshimgathiMatrimonyModelStoreContainer">
+          <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembershipPlans" EntityType="Self.MembershipPlans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentInformation" EntityType="Self.PaymentInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestContacts" EntityType="Self.RequestContacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfileDetails" EntityType="Self.UserProfileDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfilePictures" EntityType="Self.UserProfilePictures" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Favourite__UserP__5D95E53A" Association="Self.FK__Favourite__UserP__5D95E53A">
+            <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Login__UserProfi__3D2915A8" Association="Self.FK__Login__UserProfi__3D2915A8">
+            <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentIn__UserP__43D61337" Association="Self.FK__PaymentIn__UserP__43D61337">
+            <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
+            <End Role="PaymentInformation" EntitySet="PaymentInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RequestCo__Reque__56E8E7AB" Association="Self.FK__RequestCo__Reque__56E8E7AB">
+            <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
+            <End Role="RequestContacts" EntitySet="RequestContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserProfi__UserP__503BEA1C" Association="Self.FK__UserProfi__UserP__503BEA1C">
+            <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
+            <End Role="UserProfilePictures" EntitySet="UserProfilePictures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ReshimgathiMatrimonyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="GetLoginDetails_Result">
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Boolean" />
+          <Property Name="IsVerified" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="UpdatedDate" Type="DateTime" />
+        </ComplexType>
+        <EntityContainer Name="ReshimgathiDBContext" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetLoginDetails" IsComposable="true" ReturnType="Collection(ReshimgathiMatrimonyModel.GetLoginDetails_Result)" />
+          <FunctionImport Name="GetLoginDetailsProc">
+          <Parameter Name="input" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Favourites" EntityType="ReshimgathiMatrimonyModel.Favourite" />
+          <EntitySet Name="Logins" EntityType="ReshimgathiMatrimonyModel.Login" />
+          <EntitySet Name="MembershipPlans" EntityType="ReshimgathiMatrimonyModel.MembershipPlan" />
+          <EntitySet Name="PaymentInformations" EntityType="ReshimgathiMatrimonyModel.PaymentInformation" />
+          <EntitySet Name="RequestContacts" EntityType="ReshimgathiMatrimonyModel.RequestContact" />
+          <EntitySet Name="UserProfileDetails" EntityType="ReshimgathiMatrimonyModel.UserProfileDetail" />
+          <EntitySet Name="UserProfilePictures" EntityType="ReshimgathiMatrimonyModel.UserProfilePicture" />
+          <AssociationSet Name="FK__Favourite__UserP__5D95E53A" Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A">
+            <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+            <End Role="Favourite" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Login__UserProfi__3D2915A8" Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8">
+            <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentIn__UserP__43D61337" Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337">
+            <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+            <End Role="PaymentInformation" EntitySet="PaymentInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RequestCo__Reque__56E8E7AB" Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB">
+            <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+            <End Role="RequestContact" EntitySet="RequestContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserProfi__UserP__503BEA1C" Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C">
+            <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
+            <End Role="UserProfilePicture" EntitySet="UserProfilePictures" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Favourite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="FavouriteProfileId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsStillFavourite" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A" FromRole="Favourite" ToRole="UserProfileDetail" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8" FromRole="Login" ToRole="UserProfileDetail" />
+        </EntityType>
+        <EntityType Name="MembershipPlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="NoOfMonths" Type="Byte" />
+          <Property Name="Fees" Type="Int32" />
+          <Property Name="IsPlanExpired" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaymentInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="PaymentStartDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentEndDate" Type="DateTime" Precision="3" />
+          <Property Name="AmountPaid" Type="Int32" />
+          <Property Name="UserProfileExpired" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337" FromRole="PaymentInformation" ToRole="UserProfileDetail" />
+        </EntityType>
+        <EntityType Name="RequestContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RequestFrom" Type="Guid" />
+          <Property Name="RequestTo1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RequestTo2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RequestTo3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RequestTo4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RequestTo5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsRequestServed" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB" FromRole="RequestContact" ToRole="UserProfileDetail" />
+        </EntityType>
+        <EntityType Name="UserProfileDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="AlternateMobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAlternateMobileVerified" Type="Boolean" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="Religion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Caste" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SubCaste" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MartialStatus" Type="Byte" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="height" Type="Int16" />
+          <Property Name="weight" Type="Int16" />
+          <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhysicalDisability" Type="Boolean" Nullable="false" />
+          <Property Name="DisabilityDetails" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Diet" Type="Boolean" Nullable="false" />
+          <Property Name="IsSpectacles" Type="Boolean" Nullable="false" />
+          <Property Name="Rashi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nakshtra" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Charan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nadi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BirthTime" Type="Time" Precision="7" />
+          <Property Name="BirthPlace" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Devak" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Mangal" Type="Boolean" Nullable="false" />
+          <Property Name="LastEducation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EducationStream" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OccupationCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OccupationCountry" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AnnualIncome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PanCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AadharCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ResidenceAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MotherName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ParentFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Brothers" Type="Byte" />
+          <Property Name="MarriedBrothers" Type="Byte" />
+          <Property Name="Sisters" Type="Byte" />
+          <Property Name="MarriedSisters" Type="Byte" />
+          <Property Name="ParentsOccupation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SurnamesOfRelatives" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NativeDistrict" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NativeCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NativeTaluka" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FamilyWealth" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PreferredCities" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExpectedCaste" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MaxAgeDifference" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExpectedHeightAbove" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Divorcee" Type="Boolean" Nullable="false" />
+          <Property Name="ExpectedOccupation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExpectedIncome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ExpectedEducation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsLiveOnBoarding" Type="Boolean" Nullable="false" />
+          <Property Name="IsPaidProfile" Type="Boolean" Nullable="false" />
+          <Property Name="FreeTrialUser" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Favourites" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A" FromRole="UserProfileDetail" ToRole="Favourite" />
+          <NavigationProperty Name="Logins" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8" FromRole="UserProfileDetail" ToRole="Login" />
+          <NavigationProperty Name="PaymentInformations" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337" FromRole="UserProfileDetail" ToRole="PaymentInformation" />
+          <NavigationProperty Name="RequestContacts" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB" FromRole="UserProfileDetail" ToRole="RequestContact" />
+          <NavigationProperty Name="UserProfilePictures" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C" FromRole="UserProfileDetail" ToRole="UserProfilePicture" />
+        </EntityType>
+        <EntityType Name="UserProfilePicture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDefaultPicture" Type="Boolean" Nullable="false" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C" FromRole="UserProfilePicture" ToRole="UserProfileDetail" />
+        </EntityType>
+        <Association Name="FK__Favourite__UserP__5D95E53A">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+          <End Type="ReshimgathiMatrimonyModel.Favourite" Role="Favourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favourite">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Login__UserProfi__3D2915A8">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+          <End Type="ReshimgathiMatrimonyModel.Login" Role="Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentIn__UserP__43D61337">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+          <End Type="ReshimgathiMatrimonyModel.PaymentInformation" Role="PaymentInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentInformation">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RequestCo__Reque__56E8E7AB">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+          <End Type="ReshimgathiMatrimonyModel.RequestContact" Role="RequestContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestContact">
+              <PropertyRef Name="RequestFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserProfi__UserP__503BEA1C">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+          <End Type="ReshimgathiMatrimonyModel.UserProfilePicture" Role="UserProfilePicture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfileDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfilePicture">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReshimgathiMatrimonyModelStoreContainer" CdmEntityContainer="ReshimgathiDBContext">
+          <FunctionImportMapping FunctionName="ReshimgathiMatrimonyModel.Store.GetLoginDetails" FunctionImportName="GetLoginDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ReshimgathiMatrimonyModel.GetLoginDetails_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLoginDetailsProc" FunctionName="ReshimgathiMatrimonyModel.Store.GetLoginDetailsProc" />
+          <EntitySetMapping Name="Favourites">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.Favourite">
+              <MappingFragment StoreEntitySet="Favourites">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsStillFavourite" ColumnName="IsStillFavourite" />
+                <ScalarProperty Name="FavouriteProfileId" ColumnName="FavouriteProfileId" />
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipPlans">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.MembershipPlan">
+              <MappingFragment StoreEntitySet="MembershipPlans">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsPlanExpired" ColumnName="IsPlanExpired" />
+                <ScalarProperty Name="Fees" ColumnName="Fees" />
+                <ScalarProperty Name="NoOfMonths" ColumnName="NoOfMonths" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentInformations">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.PaymentInformation">
+              <MappingFragment StoreEntitySet="PaymentInformation">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserProfileExpired" ColumnName="UserProfileExpired" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PaymentEndDate" ColumnName="PaymentEndDate" />
+                <ScalarProperty Name="PaymentStartDate" ColumnName="PaymentStartDate" />
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestContacts">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.RequestContact">
+              <MappingFragment StoreEntitySet="RequestContacts">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsRequestServed" ColumnName="IsRequestServed" />
+                <ScalarProperty Name="RequestTo5" ColumnName="RequestTo5" />
+                <ScalarProperty Name="RequestTo4" ColumnName="RequestTo4" />
+                <ScalarProperty Name="RequestTo3" ColumnName="RequestTo3" />
+                <ScalarProperty Name="RequestTo2" ColumnName="RequestTo2" />
+                <ScalarProperty Name="RequestTo1" ColumnName="RequestTo1" />
+                <ScalarProperty Name="RequestFrom" ColumnName="RequestFrom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfileDetails">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.UserProfileDetail">
+              <MappingFragment StoreEntitySet="UserProfileDetails">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="FreeTrialUser" ColumnName="FreeTrialUser" />
+                <ScalarProperty Name="IsPaidProfile" ColumnName="IsPaidProfile" />
+                <ScalarProperty Name="IsLiveOnBoarding" ColumnName="IsLiveOnBoarding" />
+                <ScalarProperty Name="ExpectedEducation" ColumnName="ExpectedEducation" />
+                <ScalarProperty Name="ExpectedIncome" ColumnName="ExpectedIncome" />
+                <ScalarProperty Name="ExpectedOccupation" ColumnName="ExpectedOccupation" />
+                <ScalarProperty Name="Divorcee" ColumnName="Divorcee" />
+                <ScalarProperty Name="ExpectedHeightAbove" ColumnName="ExpectedHeightAbove" />
+                <ScalarProperty Name="MaxAgeDifference" ColumnName="MaxAgeDifference" />
+                <ScalarProperty Name="ExpectedCaste" ColumnName="ExpectedCaste" />
+                <ScalarProperty Name="PreferredCities" ColumnName="PreferredCities" />
+                <ScalarProperty Name="FamilyWealth" ColumnName="FamilyWealth" />
+                <ScalarProperty Name="NativeTaluka" ColumnName="NativeTaluka" />
+                <ScalarProperty Name="NativeCity" ColumnName="NativeCity" />
+                <ScalarProperty Name="NativeDistrict" ColumnName="NativeDistrict" />
+                <ScalarProperty Name="SurnamesOfRelatives" ColumnName="SurnamesOfRelatives" />
+                <ScalarProperty Name="ParentsOccupation" ColumnName="ParentsOccupation" />
+                <ScalarProperty Name="MarriedSisters" ColumnName="MarriedSisters" />
+                <ScalarProperty Name="Sisters" ColumnName="Sisters" />
+                <ScalarProperty Name="MarriedBrothers" ColumnName="MarriedBrothers" />
+                <ScalarProperty Name="Brothers" ColumnName="Brothers" />
+                <ScalarProperty Name="ParentFullName" ColumnName="ParentFullName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="ResidenceAddress" ColumnName="ResidenceAddress" />
+                <ScalarProperty Name="AadharCard" ColumnName="AadharCard" />
+                <ScalarProperty Name="PanCard" ColumnName="PanCard" />
+                <ScalarProperty Name="AnnualIncome" ColumnName="AnnualIncome" />
+                <ScalarProperty Name="OccupationCountry" ColumnName="OccupationCountry" />
+                <ScalarProperty Name="OccupationCity" ColumnName="OccupationCity" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="EducationStream" ColumnName="EducationStream" />
+                <ScalarProperty Name="LastEducation" ColumnName="LastEducation" />
+                <ScalarProperty Name="Mangal" ColumnName="Mangal" />
+                <ScalarProperty Name="Devak" ColumnName="Devak" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+                <ScalarProperty Name="BirthTime" ColumnName="BirthTime" />
+                <ScalarProperty Name="Nadi" ColumnName="Nadi" />
+                <ScalarProperty Name="Gan" ColumnName="Gan" />
+                <ScalarProperty Name="Charan" ColumnName="Charan" />
+                <ScalarProperty Name="Nakshtra" ColumnName="Nakshtra" />
+                <ScalarProperty Name="Rashi" ColumnName="Rashi" />
+                <ScalarProperty Name="IsSpectacles" ColumnName="IsSpectacles" />
+                <ScalarProperty Name="Diet" ColumnName="Diet" />
+                <ScalarProperty Name="DisabilityDetails" ColumnName="DisabilityDetails" />
+                <ScalarProperty Name="PhysicalDisability" ColumnName="PhysicalDisability" />
+                <ScalarProperty Name="Complexion" ColumnName="Complexion" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+                <ScalarProperty Name="SubCaste" ColumnName="SubCaste" />
+                <ScalarProperty Name="Caste" ColumnName="Caste" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="IsAlternateMobileVerified" ColumnName="IsAlternateMobileVerified" />
+                <ScalarProperty Name="AlternateMobileNumber" ColumnName="AlternateMobileNumber" />
+                <ScalarProperty Name="IsMobileVerified" ColumnName="IsMobileVerified" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfilePictures">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.UserProfilePicture">
+              <MappingFragment StoreEntitySet="UserProfilePictures">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDefaultPicture" ColumnName="IsDefaultPicture" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
