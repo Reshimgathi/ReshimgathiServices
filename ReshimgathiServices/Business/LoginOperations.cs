@@ -17,16 +17,5 @@ namespace ReshimgathiServices.Business
 
             return d1;
         }
-
-        public Login Get(string username, string password)
-        {
-            LoginModel obj = new LoginModel();
-
-            Login d1 = obj.Select(username, password);
-
-            return d1;
-        }
-
-
     }
 }

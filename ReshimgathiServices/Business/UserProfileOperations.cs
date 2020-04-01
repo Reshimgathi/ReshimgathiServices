@@ -17,7 +17,7 @@ namespace ReshimgathiServices.Business
             return user;
         }
 
-        public UserProfile MappingUserProfile(UserProfileDetail details)
+        private UserProfile MappingUserProfile(UserProfileDetail details)
         {
             UserProfile u1 = new UserProfile() {
                 Id = details.Id,

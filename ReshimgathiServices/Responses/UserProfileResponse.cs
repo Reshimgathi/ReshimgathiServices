@@ -5,11 +5,8 @@ using ReshimgathiServices.Models;
 
 namespace ReshimgathiServices.Responses
 {
-    public class LoginResponse
+    public class UserProfileResponse
     {
-        [JsonProperty("loginstatus")]
-        public bool LoginStatus { get; set; }
-
         [JsonProperty("userprofiledetails")]
         public UserProfile UserProfileDetails { get; set; }
 

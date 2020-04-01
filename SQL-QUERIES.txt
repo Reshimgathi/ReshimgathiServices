@@ -28,7 +28,7 @@ CREATE TABLE LoginEvents (
 
 CREATE TABLE Login (
     Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-    UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+    UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
     Username varchar(255),
 	Password varchar(255),
 	IsVerified BIT  NOT NULL  DEFAULT 0,
@@ -38,22 +38,30 @@ CREATE TABLE Login (
 
 --last login date.
 
-INSERT INTO Login VALUES (default, 'amit', 'amit', 0, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO Login VALUES (default, 'guid', '77', '77', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, CreateDate, UpdatedDate) 
+	VALUES (default, 100000, 'Amit','Patange', 7709981177, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-
+INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p15.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p14.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p16.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p17.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 ----------------------------------------------
 
+ALTER TABLE UserProfileDetails
+    ADD 
+    	RegistrationId int(10) NOT NULL;
 
 CREATE TABLE UserProfileDetails(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	RegistrationId varchar(255),
+	RegistrationId int,
 	FirstName varchar(255),
 	MiddleName varchar(255),
 	LastName varchar(255),
-	MobileNumber int,
+	MobileNumber varchar(50),
 	IsMobileVerified BIT NOT NULL DEFAULT 0,
-	AlternateMobileNumber int,
+	AlternateMobileNumber varchar(50),
 	IsAlternateMobileVerified BIT NOT NULL DEFAULT 0,
 	EmailId varchar(255),
 	IsEmailVerified BIT NOT NULL DEFAULT 0,
@@ -124,15 +132,15 @@ ALTER TABLE UserProfileDetails
 
 --7 Days Free trial Customer
 ALTER TABLE UserProfileDetails
-    MODIFY COLUMN
-    	FreeTrialUser  BIT NOT NULL DEFAULT 0;
+    ADD 
+    	FreeTrialUser BIT NOT NULL DEFAULT 0;
 
 
 ----------------------------------------------------------------------
 
 CREATE TABLE PaymentInformation(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	PaymentStartDate datetime,
 	PaymentEndDate datetime,
 	AmountPaid int,
@@ -156,7 +164,7 @@ CREATE TABLE MembershipPlans(
 
 CREATE TABLE UserProfilePictures(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	ImageURL varchar(255),
 	IsDefaultPicture BIT NOT NULL DEFAULT 0,
 	Status tinyint,
@@ -182,7 +190,7 @@ CREATE TABLE RequestContacts(
 ----------------------------------------------------------------------
  CREATE TABLE Favourites(
  	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
- 	UserProfileIid UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+ 	UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
  	FavouriteProfileId varchar(255),
  	IsStillFavourite BIT NOT NULL DEFAULT 1,
  	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,

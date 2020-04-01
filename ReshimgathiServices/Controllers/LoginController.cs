@@ -23,8 +23,8 @@ namespace ReshimgathiServices.Controllers
         [HttpPost]
         public HttpResponseMessage VerifyLoginDetails(LoginRequest req)
         {
-            LoginResponse lor = new LoginResponse();
-            bool loginStatus = false;
+            Response<LoginResponse> lor = new Response<LoginResponse>();
+            bool isValidCreds = false;
             try
             {
                 LoginOperations loginOp = new LoginOperations();
@@ -32,26 +32,29 @@ namespace ReshimgathiServices.Controllers
 
                 if(loginDetails != null)
                 {
-                    loginStatus = true;
+                    isValidCreds = true;
                 }
                 
-                if (loginStatus)
+                if (isValidCreds)
                 {
                     UserProfileOperations uop = new UserProfileOperations();
+                    UserProfilePicturesOperations uppo = new UserProfilePicturesOperations();
                     lor.Message = "User found. Welcome to Reshimgathi Matrimony !!";
-                    lor.ResponseObj = new LoginSuccess()
+                    lor.ResponseObj = new LoginResponse()
                     {
                         LoginStatus = true,
-                        UserProfileDetails = uop.GetUserProfileDetails(loginDetails.UserProfileId)
+                        UserProfileDetails = uop.GetUserProfileDetails(loginDetails.UserProfileId),
+                        UserProfilePictures = uppo.GetUserProfilePictures(loginDetails.UserProfileId)
                     };
                 } 
                 else
                 {
                     lor.Message = "User Not Found !! Please try with correct login Creds.";
-                    lor.ResponseObj = new LoginSuccess()
+                    lor.ResponseObj = new LoginResponse()
                     {
                         LoginStatus = false,
-                        UserProfileDetails = null
+                        UserProfileDetails = null,
+                        UserProfilePictures = null
                     };
                 } 
 
@@ -65,10 +68,11 @@ namespace ReshimgathiServices.Controllers
                 lor.Message = "Internal Server error. Please contact admin or try after some time.";
                 lor.AdditionalMessage = e.Message;
                 lor.HttpStatus = HttpStatusCode.InternalServerError.ToString();
-                lor.ResponseObj = new LoginSuccess()
+                lor.ResponseObj = new LoginResponse()
                 {
                     LoginStatus = false,
-                    UserProfileDetails = null
+                    UserProfileDetails = null,
+                    UserProfilePictures = null
                 };
             }
 

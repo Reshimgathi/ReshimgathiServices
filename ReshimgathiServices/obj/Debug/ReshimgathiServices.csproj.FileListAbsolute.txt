@@ -74,3 +74,4 @@ C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServic
 C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\EntityFramework.SqlServer.dll
 C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\EntityFramework.xml
 C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\EntityFramework.SqlServer.xml
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\obj\Debug\ReshimgathiServices.csprojResolveAssemblyReference.cache
