@@ -15,7 +15,7 @@ namespace ReshimgathiServices
     public partial class Login
     {
         public System.Guid Id { get; set; }
-        public Nullable<System.Guid> UserProfileId { get; set; }
+        public System.Guid UserProfileId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public bool IsVerified { get; set; }

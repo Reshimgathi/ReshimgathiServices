@@ -15,7 +15,7 @@ namespace ReshimgathiServices
     public partial class Favourite
     {
         public System.Guid Id { get; set; }
-        public Nullable<System.Guid> UserProfileId { get; set; }
+        public System.Guid UserProfileId { get; set; }
         public string FavouriteProfileId { get; set; }
         public bool IsStillFavourite { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }

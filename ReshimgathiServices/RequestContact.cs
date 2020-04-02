@@ -15,7 +15,7 @@ namespace ReshimgathiServices
     public partial class RequestContact
     {
         public System.Guid Id { get; set; }
-        public Nullable<System.Guid> RequestFrom { get; set; }
+        public System.Guid RequestFrom { get; set; }
         public string RequestTo1 { get; set; }
         public string RequestTo2 { get; set; }
         public string RequestTo3 { get; set; }

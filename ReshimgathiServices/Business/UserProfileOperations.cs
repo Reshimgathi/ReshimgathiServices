@@ -8,10 +8,19 @@ namespace ReshimgathiServices.Business
 {
     public class UserProfileOperations
     {
-        public UserProfile GetUserProfileDetails(Guid? userProfileID)
+        public UserProfile GetUserProfileDetails(Guid userProfileID)
         {
             UserProfileModel upm = new UserProfileModel();
             UserProfileDetail details =  upm.Select(userProfileID);
+
+            var user = MappingUserProfile(details);
+            return user;
+        }
+
+        public UserProfile GetUserProfileDetails(int userRegId)
+        {
+            UserProfileModel upm = new UserProfileModel();
+            UserProfileDetail details = upm.Select(userRegId);
 
             var user = MappingUserProfile(details);
             return user;

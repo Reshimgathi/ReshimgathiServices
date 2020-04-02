@@ -10,7 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FavouriteProfileId" Type="varchar" MaxLength="255" />
           <Property Name="IsStillFavourite" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" />
@@ -21,7 +21,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="255" />
           <Property Name="Password" Type="varchar" MaxLength="255" />
           <Property Name="IsVerified" Type="bit" Nullable="false" />
@@ -44,7 +44,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PaymentStartDate" Type="datetime" />
           <Property Name="PaymentEndDate" Type="datetime" />
           <Property Name="AmountPaid" Type="int" />
@@ -57,7 +57,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RequestFrom" Type="uniqueidentifier" />
+          <Property Name="RequestFrom" Type="uniqueidentifier" Nullable="false" />
           <Property Name="RequestTo1" Type="varchar" MaxLength="255" />
           <Property Name="RequestTo2" Type="varchar" MaxLength="255" />
           <Property Name="RequestTo3" Type="varchar" MaxLength="255" />
@@ -67,29 +67,22 @@
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="sql_server_integers">
-          <Property Name="bigint_col" Type="bigint" />
-          <Property Name="int_col" Type="int" />
-          <Property Name="smallint_col" Type="smallint" />
-          <Property Name="tinyint_col" Type="tinyint" />
-        </EntityType>-->
         <EntityType Name="UserProfileDetails">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RegistrationId" Type="int" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="255" />
           <Property Name="MiddleName" Type="varchar" MaxLength="255" />
           <Property Name="LastName" Type="varchar" MaxLength="255" />
-          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsMobileVerified" Type="bit" Nullable="false" />
           <Property Name="AlternateMobileNumber" Type="varchar" MaxLength="50" />
           <Property Name="IsAlternateMobileVerified" Type="bit" Nullable="false" />
           <Property Name="EmailId" Type="varchar" MaxLength="255" />
           <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
           <Property Name="Status" Type="tinyint" />
           <Property Name="Religion" Type="varchar" MaxLength="255" />
           <Property Name="Caste" Type="varchar" MaxLength="255" />
@@ -153,15 +146,15 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserProfileId" Type="uniqueidentifier" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ImageURL" Type="varchar" MaxLength="255" />
           <Property Name="IsDefaultPicture" Type="bit" Nullable="false" />
           <Property Name="Status" Type="tinyint" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
-        <Association Name="FK__Favourite__UserP__5D95E53A">
-          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+        <Association Name="FK__Favourite__UserP__6319B466">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="1" />
           <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetails">
@@ -172,8 +165,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Login__UserProfi__3D2915A8">
-          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+        <Association Name="FK__Login__UserProfi__42ACE4D4">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="1" />
           <End Role="Login" Type="Self.Login" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetails">
@@ -184,8 +177,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentIn__UserP__43D61337">
-          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+        <Association Name="FK__PaymentIn__UserP__4959E263">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="1" />
           <End Role="PaymentInformation" Type="Self.PaymentInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetails">
@@ -196,8 +189,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RequestCo__Reque__56E8E7AB">
-          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+        <Association Name="FK__RequestCo__Reque__5C6CB6D7">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="1" />
           <End Role="RequestContacts" Type="Self.RequestContacts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetails">
@@ -208,8 +201,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserProfi__UserP__503BEA1C">
-          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="0..1" />
+        <Association Name="FK__UserProfi__UserP__55BFB948">
+          <End Role="UserProfileDetails" Type="Self.UserProfileDetails" Multiplicity="1" />
           <End Role="UserProfilePictures" Type="Self.UserProfilePictures" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetails">
@@ -246,23 +239,23 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
           <EntitySet Name="RequestContacts" EntityType="Self.RequestContacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserProfileDetails" EntityType="Self.UserProfileDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserProfilePictures" EntityType="Self.UserProfilePictures" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Favourite__UserP__5D95E53A" Association="Self.FK__Favourite__UserP__5D95E53A">
+          <AssociationSet Name="FK__Favourite__UserP__6319B466" Association="Self.FK__Favourite__UserP__6319B466">
             <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
             <End Role="Favourites" EntitySet="Favourites" />
           </AssociationSet>
-          <AssociationSet Name="FK__Login__UserProfi__3D2915A8" Association="Self.FK__Login__UserProfi__3D2915A8">
+          <AssociationSet Name="FK__Login__UserProfi__42ACE4D4" Association="Self.FK__Login__UserProfi__42ACE4D4">
             <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
             <End Role="Login" EntitySet="Login" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentIn__UserP__43D61337" Association="Self.FK__PaymentIn__UserP__43D61337">
+          <AssociationSet Name="FK__PaymentIn__UserP__4959E263" Association="Self.FK__PaymentIn__UserP__4959E263">
             <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
             <End Role="PaymentInformation" EntitySet="PaymentInformation" />
           </AssociationSet>
-          <AssociationSet Name="FK__RequestCo__Reque__56E8E7AB" Association="Self.FK__RequestCo__Reque__56E8E7AB">
+          <AssociationSet Name="FK__RequestCo__Reque__5C6CB6D7" Association="Self.FK__RequestCo__Reque__5C6CB6D7">
             <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
             <End Role="RequestContacts" EntitySet="RequestContacts" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserProfi__UserP__503BEA1C" Association="Self.FK__UserProfi__UserP__503BEA1C">
+          <AssociationSet Name="FK__UserProfi__UserP__55BFB948" Association="Self.FK__UserProfi__UserP__55BFB948">
             <End Role="UserProfileDetails" EntitySet="UserProfileDetails" />
             <End Role="UserProfilePictures" EntitySet="UserProfilePictures" />
           </AssociationSet>
@@ -292,23 +285,23 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
           <EntitySet Name="RequestContacts" EntityType="ReshimgathiMatrimonyModel.RequestContact" />
           <EntitySet Name="UserProfileDetails" EntityType="ReshimgathiMatrimonyModel.UserProfileDetail" />
           <EntitySet Name="UserProfilePictures" EntityType="ReshimgathiMatrimonyModel.UserProfilePicture" />
-          <AssociationSet Name="FK__Favourite__UserP__5D95E53A" Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A">
+          <AssociationSet Name="FK__Favourite__UserP__6319B466" Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__6319B466">
             <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
             <End Role="Favourite" EntitySet="Favourites" />
           </AssociationSet>
-          <AssociationSet Name="FK__Login__UserProfi__3D2915A8" Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8">
+          <AssociationSet Name="FK__Login__UserProfi__42ACE4D4" Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__42ACE4D4">
             <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
             <End Role="Login" EntitySet="Logins" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentIn__UserP__43D61337" Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337">
+          <AssociationSet Name="FK__PaymentIn__UserP__4959E263" Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__4959E263">
             <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
             <End Role="PaymentInformation" EntitySet="PaymentInformations" />
           </AssociationSet>
-          <AssociationSet Name="FK__RequestCo__Reque__56E8E7AB" Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB">
+          <AssociationSet Name="FK__RequestCo__Reque__5C6CB6D7" Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__5C6CB6D7">
             <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
             <End Role="RequestContact" EntitySet="RequestContacts" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserProfi__UserP__503BEA1C" Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C">
+          <AssociationSet Name="FK__UserProfi__UserP__55BFB948" Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__55BFB948">
             <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
             <End Role="UserProfilePicture" EntitySet="UserProfilePictures" />
           </AssociationSet>
@@ -318,25 +311,25 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="UserProfileId" Type="Guid" Nullable="false" />
           <Property Name="FavouriteProfileId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IsStillFavourite" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A" FromRole="Favourite" ToRole="UserProfileDetail" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__6319B466" FromRole="Favourite" ToRole="UserProfileDetail" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="UserProfileId" Type="Guid" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IsVerified" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8" FromRole="Login" ToRole="UserProfileDetail" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__42ACE4D4" FromRole="Login" ToRole="UserProfileDetail" />
         </EntityType>
         <EntityType Name="MembershipPlan">
           <Key>
@@ -354,21 +347,21 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="UserProfileId" Type="Guid" Nullable="false" />
           <Property Name="PaymentStartDate" Type="DateTime" Precision="3" />
           <Property Name="PaymentEndDate" Type="DateTime" Precision="3" />
           <Property Name="AmountPaid" Type="Int32" />
           <Property Name="UserProfileExpired" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337" FromRole="PaymentInformation" ToRole="UserProfileDetail" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__4959E263" FromRole="PaymentInformation" ToRole="UserProfileDetail" />
         </EntityType>
         <EntityType Name="RequestContact">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="RequestFrom" Type="Guid" />
+          <Property Name="RequestFrom" Type="Guid" Nullable="false" />
           <Property Name="RequestTo1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="RequestTo2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="RequestTo3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -377,23 +370,24 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
           <Property Name="IsRequestServed" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB" FromRole="RequestContact" ToRole="UserProfileDetail" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__5C6CB6D7" FromRole="RequestContact" ToRole="UserProfileDetail" />
         </EntityType>
         <EntityType Name="UserProfileDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsMobileVerified" Type="Boolean" Nullable="false" />
           <Property Name="AlternateMobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsAlternateMobileVerified" Type="Boolean" Nullable="false" />
           <Property Name="EmailId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
           <Property Name="Status" Type="Byte" />
           <Property Name="Religion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Caste" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -451,27 +445,27 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
           <Property Name="FreeTrialUser" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Favourites" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__5D95E53A" FromRole="UserProfileDetail" ToRole="Favourite" />
-          <NavigationProperty Name="Logins" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__3D2915A8" FromRole="UserProfileDetail" ToRole="Login" />
-          <NavigationProperty Name="PaymentInformations" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__43D61337" FromRole="UserProfileDetail" ToRole="PaymentInformation" />
-          <NavigationProperty Name="RequestContacts" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__56E8E7AB" FromRole="UserProfileDetail" ToRole="RequestContact" />
-          <NavigationProperty Name="UserProfilePictures" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C" FromRole="UserProfileDetail" ToRole="UserProfilePicture" />
+          <NavigationProperty Name="Favourites" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__6319B466" FromRole="UserProfileDetail" ToRole="Favourite" />
+          <NavigationProperty Name="Logins" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__42ACE4D4" FromRole="UserProfileDetail" ToRole="Login" />
+          <NavigationProperty Name="PaymentInformations" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__4959E263" FromRole="UserProfileDetail" ToRole="PaymentInformation" />
+          <NavigationProperty Name="RequestContacts" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__5C6CB6D7" FromRole="UserProfileDetail" ToRole="RequestContact" />
+          <NavigationProperty Name="UserProfilePictures" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__55BFB948" FromRole="UserProfileDetail" ToRole="UserProfilePicture" />
         </EntityType>
         <EntityType Name="UserProfilePicture">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="UserProfileId" Type="Guid" />
+          <Property Name="UserProfileId" Type="Guid" Nullable="false" />
           <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IsDefaultPicture" Type="Boolean" Nullable="false" />
           <Property Name="Status" Type="Byte" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__503BEA1C" FromRole="UserProfilePicture" ToRole="UserProfileDetail" />
+          <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__55BFB948" FromRole="UserProfilePicture" ToRole="UserProfileDetail" />
         </EntityType>
-        <Association Name="FK__Favourite__UserP__5D95E53A">
-          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+        <Association Name="FK__Favourite__UserP__6319B466">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
           <End Type="ReshimgathiMatrimonyModel.Favourite" Role="Favourite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetail">
@@ -482,8 +476,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Login__UserProfi__3D2915A8">
-          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+        <Association Name="FK__Login__UserProfi__42ACE4D4">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
           <End Type="ReshimgathiMatrimonyModel.Login" Role="Login" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetail">
@@ -494,8 +488,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentIn__UserP__43D61337">
-          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+        <Association Name="FK__PaymentIn__UserP__4959E263">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
           <End Type="ReshimgathiMatrimonyModel.PaymentInformation" Role="PaymentInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetail">
@@ -506,8 +500,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RequestCo__Reque__56E8E7AB">
-          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+        <Association Name="FK__RequestCo__Reque__5C6CB6D7">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
           <End Type="ReshimgathiMatrimonyModel.RequestContact" Role="RequestContact" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetail">
@@ -518,8 +512,8 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserProfi__UserP__503BEA1C">
-          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="0..1" />
+        <Association Name="FK__UserProfi__UserP__55BFB948">
+          <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
           <End Type="ReshimgathiMatrimonyModel.UserProfilePicture" Role="UserProfilePicture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfileDetail">
@@ -677,6 +671,7 @@ warning 6013: The table/view 'ReshimgathiMatrimony.dbo.sql_server_integers' does
                 <ScalarProperty Name="Caste" ColumnName="Caste" />
                 <ScalarProperty Name="Religion" ColumnName="Religion" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
                 <ScalarProperty Name="EmailId" ColumnName="EmailId" />
                 <ScalarProperty Name="IsAlternateMobileVerified" ColumnName="IsAlternateMobileVerified" />

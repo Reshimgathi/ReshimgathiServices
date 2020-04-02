@@ -15,7 +15,7 @@ namespace ReshimgathiServices
     public partial class PaymentInformation
     {
         public System.Guid Id { get; set; }
-        public Nullable<System.Guid> UserProfileId { get; set; }
+        public System.Guid UserProfileId { get; set; }
         public Nullable<System.DateTime> PaymentStartDate { get; set; }
         public Nullable<System.DateTime> PaymentEndDate { get; set; }
         public Nullable<int> AmountPaid { get; set; }

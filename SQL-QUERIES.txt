@@ -24,47 +24,128 @@ CREATE TABLE LoginEvents (
 );
 
 -----------------------------------------------------------
-
-
-CREATE TABLE Login (
-    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-    UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
-    Username varchar(255),
-	Password varchar(255),
-	IsVerified BIT  NOT NULL  DEFAULT 0,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
-);
-
 --last login date.
 
-INSERT INTO Login VALUES (default, 'guid', '77', '77', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 100000, 'Amit','Patange', 7709981177, 1, 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+	
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('D191DF91-5386-4BF4-9B50-FC1B5C29D926', 100001, 'Sachin','Sonune', 9922974447, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+	
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('B0177D13-0831-4116-912E-7BBBB43464E1', 100002, 'Anuradha','BHosale', 9769431773, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+	
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('F44BC004-6481-4F62-8310-9B893F0C052C', 100003, 'Smita','Kothimbire', 9422602495, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, CreateDate, UpdatedDate) 
-	VALUES (default, 100000, 'Amit','Patange', 7709981177, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('6ECFF0CD-DBB2-4E1A-9DC2-624AD0A8018F', 100004, 'Tushar','Jadhav', 9422955800, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p15.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p14.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p16.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-INSERT INTO UserProfilePictures VALUES (default, 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p17.jpg', '1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('8860F3DD-87BC-4DF8-89D3-854BD95F77B2', 100005, 'Chatura','Maliye', 8169841303, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('E18F3248-7019-45DB-87C9-26C193A70792', 100006, 'Shashikant','Gavali', 8087287387, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('1F8F49DC-4376-40F8-BA2E-9006AE93AAC8', 100007, 'Sneha','Kamble', 9284663976, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('EBDD8376-1184-40F0-A450-0223714428B1', 100008, 'Sachin','Patil', 9309577626, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('4875879F-D0EA-4872-BE80-BAC357ED52DB', 100009, 'Neha','Patil', 9545360778, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('70142849-0E86-4AC7-8853-0DF93CF664EC', 100010, 'Sachin','Gajre', 9096897629, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('DCAA0CA5-2F3A-461A-90FF-44945A02F254', 100011, 'Amruta','Patil', 9890098900, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('83308D1E-C8F5-4F97-9EEC-5612F4BC9244', 100011, 'Kiran','Dagade', 9921027405, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
+	VALUES ('E7DDE56F-4C10-4C77-8FE7-8853E5045361', 100011, 'Sayali','Dagade', 9420326958, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+
+
+INSERT INTO Login VALUES ('6F937F19-C5DD-4038-87F7-3D96DD65B79B', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', '77', '77', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+
+
+
+INSERT INTO UserProfilePictures VALUES ('57E30CCB-7859-416C-8C65-47D7EC31229B', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p15.jpg', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfilePictures VALUES ('6A7E4861-84A9-41E9-9D10-5E1E6D9407F1', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p14.jpg', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfilePictures VALUES ('0B739611-A551-4789-B36F-9D14A6054A32', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p16.jpg', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+INSERT INTO UserProfilePictures VALUES ('5D7148CE-3A74-4883-9999-8129801FB0B1', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'https://reshimgathi.github.io/images/p17.jpg', 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+
+
+
+INSERT INTO RequestContacts VALUES ('9CBE89E2-654B-409F-A5C3-EA4A4F013303', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'B0177D13-0831-4116-912E-7BBBB43464E1', 
+	'8860F3DD-87BC-4DF8-89D3-854BD95F77B2', '1F8F49DC-4376-40F8-BA2E-9006AE93AAC8', 'DCAA0CA5-2F3A-461A-90FF-44945A02F254', 'E7DDE56F-4C10-4C77-8FE7-8853E5045361', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+
+INSERT INTO Favourites VALUES ('DE4BC719-6528-4755-8C09-90E337CF7C75', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'B0177D13-0831-4116-912E-7BBBB43464E1', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Favourites VALUES ('500569A1-802B-493C-AC5E-0CB76B708FBA', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', '8860F3DD-87BC-4DF8-89D3-854BD95F77B2', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Favourites VALUES ('23E63B96-8A09-4BA6-A02B-F200E71BA7CD', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', '1F8F49DC-4376-40F8-BA2E-9006AE93AAC8', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Favourites VALUES ('2502899C-F46F-4EA8-B556-537E4B45BF6E', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'DCAA0CA5-2F3A-461A-90FF-44945A02F254', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Favourites VALUES ('2B9B616A-E181-458C-BBA6-72FAF437DFBC', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', 'E7DDE56F-4C10-4C77-8FE7-8853E5045361', 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+
+
+INSERT INTO PaymentInformation VALUES ('CD8FE673-9633-4BD9-BBCE-7AAFB8F81908', 'EE5E48E6-8D04-4AAD-8A21-F15FD7F8A3D2', '2020-01-01 12:39:44.757', '2020-12-31 12:39:44.757', 1800, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO PaymentInformation VALUES ('E9ADD758-38F6-4E92-8307-5CD5D73ACF76', 'D191DF91-5386-4BF4-9B50-FC1B5C29D926', '2020-01-01 12:39:44.757', '2020-12-31 12:39:44.757', 1800, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO PaymentInformation VALUES ('B539FED4-5FA1-44A1-AE5A-ED8B674311E6', '6ECFF0CD-DBB2-4E1A-9DC2-624AD0A8018F', '2020-01-01 12:39:44.757', '2020-12-31 12:39:44.757', 1800, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO PaymentInformation VALUES ('B25D4D1A-E521-4829-9ED9-2241593F8511', '8860F3DD-87BC-4DF8-89D3-854BD95F77B2', '2020-01-01 12:39:44.757', '2020-12-31 12:39:44.757', 1800, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO PaymentInformation VALUES ('12F06EFC-EF26-4D0E-8B6D-845939907816', 'E7DDE56F-4C10-4C77-8FE7-8853E5045361', '2020-01-01 12:39:44.757', '2020-12-31 12:39:44.757', 1800, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+
 ----------------------------------------------
 
 ALTER TABLE UserProfileDetails
     ADD 
     	RegistrationId int(10) NOT NULL;
 
+ALTER TABLE UserProfileDetails
+    ADD 
+    	Gender BIT NOT NULL;
+
+ALTER TABLE UserProfileDetails
+    ADD 
+        IsLiveOnBoarding BIT NOT NULL DEFAULT 1,
+		IsPaidProfile  BIT NOT NULL DEFAULT 0;
+
+--7 Days Free trial Customer
+ALTER TABLE UserProfileDetails
+    ADD 
+    	FreeTrialUser BIT NOT NULL DEFAULT 0;
+
+
+
+------------------------------------------------------------------------------------------------------
+Drop table Login;
+Drop table RequestContacts;
+Drop table MembershipPlans;
+Drop table PaymentInformation;
+Drop table UserProfileDetails;
+
+------------------------------------------------------------------------------------------------------
+
+
 CREATE TABLE UserProfileDetails(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	RegistrationId int,
+	RegistrationId int NOT NULL,
 	FirstName varchar(255),
 	MiddleName varchar(255),
 	LastName varchar(255),
-	MobileNumber varchar(50),
+	MobileNumber varchar(50) NOT NULL,
 	IsMobileVerified BIT NOT NULL DEFAULT 0,
 	AlternateMobileNumber varchar(50),
 	IsAlternateMobileVerified BIT NOT NULL DEFAULT 0,
 	EmailId varchar(255),
 	IsEmailVerified BIT NOT NULL DEFAULT 0,
+	Gender BIT NOT NULL,
 	Status tinyint,
 	Religion varchar(255),
 	Caste varchar(255),
@@ -125,22 +206,24 @@ CREATE TABLE UserProfileDetails(
 );
 
 
-ALTER TABLE UserProfileDetails
-    ADD 
-        IsLiveOnBoarding BIT NOT NULL DEFAULT 1,
-		IsPaidProfile  BIT NOT NULL DEFAULT 0;
+----------------------------------------------------------------------
 
---7 Days Free trial Customer
-ALTER TABLE UserProfileDetails
-    ADD 
-    	FreeTrialUser BIT NOT NULL DEFAULT 0;
+CREATE TABLE Login (
+    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+    UserProfileId UNIQUEIDENTIFIER NOT NUll FOREIGN KEY REFERENCES UserProfileDetails(Id),
+    Username varchar(255),
+	Password varchar(255),
+	IsVerified BIT  NOT NULL  DEFAULT 0,
+	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+);
 
 
 ----------------------------------------------------------------------
 
 CREATE TABLE PaymentInformation(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	UserProfileId UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	PaymentStartDate datetime,
 	PaymentEndDate datetime,
 	AmountPaid int,
@@ -149,6 +232,7 @@ CREATE TABLE PaymentInformation(
 	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
 );
 
+----------------------------------------------------------------------
 
 CREATE TABLE MembershipPlans(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
@@ -164,7 +248,7 @@ CREATE TABLE MembershipPlans(
 
 CREATE TABLE UserProfilePictures(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	UserProfileId UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	ImageURL varchar(255),
 	IsDefaultPicture BIT NOT NULL DEFAULT 0,
 	Status tinyint,
@@ -176,7 +260,7 @@ CREATE TABLE UserProfilePictures(
 
 CREATE TABLE RequestContacts(
 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
-	RequestFrom UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+	RequestFrom UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	RequestTo1 varchar(255),
 	RequestTo2 varchar(255),
 	RequestTo3 varchar(255),
@@ -190,7 +274,7 @@ CREATE TABLE RequestContacts(
 ----------------------------------------------------------------------
  CREATE TABLE Favourites(
  	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
- 	UserProfileId UNIQUEIDENTIFIER FOREIGN KEY REFERENCES UserProfileDetails(Id),
+ 	UserProfileId UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
  	FavouriteProfileId varchar(255),
  	IsStillFavourite BIT NOT NULL DEFAULT 1,
  	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,

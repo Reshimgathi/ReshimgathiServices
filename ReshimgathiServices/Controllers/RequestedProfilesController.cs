@@ -10,99 +10,42 @@ using System.Web.Http;
 namespace ReshimgathiServices.Controllers
 {
     /// <summary>
-    /// This controller helps to manage all types of User Profile Related operations.
+    /// This controller helps to manage all types of Requested Profile Operations.
     /// </summary>
-    [RoutePrefix("api/user")]
+    [RoutePrefix("api/request")]
     [CatchException]
-    public class UserProfileController : ApiController
+    public class RequestedProfilesController : ApiController
     {
         /// <summary>
-        /// Get user profile based on given profileid
+        /// Get user Requested Profiles based on UserProfileId
         /// </summary>
         /// <returns></returns>
-        [Route("profile/{id}")]
+        [Route("checklimit/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetUserProfile(Guid id)
+        public HttpResponseMessage IsTodaysLimitExceeded(Guid id)
         {
-            Response<UserProfileResponse> upr = new Response<UserProfileResponse>();
+            Response<RequestedProfileResponse> upr = new Response<RequestedProfileResponse>();
             try
             {
                 UserProfileOperations uop = new UserProfileOperations();
-                UserProfilePicturesOperations uppo = new UserProfilePicturesOperations();
-                var userDetails = uop.GetUserProfileDetails(id);
-
-                if(userDetails != null)
-                {
-                    upr.Message = "User Profile found.";
-                    upr.HttpStatus = HttpStatusCode.OK.ToString();
-                    upr.ResponseObj = new UserProfileResponse()
-                    {
-                        UserProfileDetails = userDetails,
-                        UserProfilePictures = uppo.GetUserProfilePictures(userDetails.Id)
-                    };
-                }
-                else
-                {
-                    upr.Message = "User Profile Not Found.";
-                    upr.ResponseObj = new UserProfileResponse()
-                    {
-                        UserProfileDetails = null,
-                        UserProfilePictures = null
-                    };
-                }
-
-                upr.AdditionalMessage = "Additional note found here.";
-                upr.HttpStatus = HttpStatusCode.OK.ToString();
-                upr.Success = true;
-            }
-            catch(Exception e)
-            {
-                upr.Success = false;
-                upr.Message = "Internal Server error. Please contact admin or try after some time.";
-                upr.AdditionalMessage = e.Message;
-                upr.HttpStatus = HttpStatusCode.InternalServerError.ToString();
-                upr.ResponseObj = new UserProfileResponse()
-                {
-                    UserProfileDetails = null,
-                    UserProfilePictures = null
-                };
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, upr);
-        }
-
-        /// <summary>
-        /// Get user profile based on given Registration Id
-        /// </summary>
-        /// <returns></returns>
-        [Route("registration/{id}")]
-        [HttpGet]
-        public HttpResponseMessage GetUserProfileByRegistrationId(int id)
-        {
-            Response<UserProfileResponse> upr = new Response<UserProfileResponse>();
-            try
-            {
-                UserProfileOperations uop = new UserProfileOperations();
-                UserProfilePicturesOperations uppo = new UserProfilePicturesOperations();
+                RequestedProfileOperations rpo = new RequestedProfileOperations();
                 var userDetails = uop.GetUserProfileDetails(id);
 
                 if (userDetails != null)
                 {
                     upr.Message = "User Profile found.";
                     upr.HttpStatus = HttpStatusCode.OK.ToString();
-                    upr.ResponseObj = new UserProfileResponse()
+                    upr.ResponseObj = new RequestedProfileResponse()
                     {
-                        UserProfileDetails = userDetails,
-                        UserProfilePictures = uppo.GetUserProfilePictures(userDetails.Id)
+                        LimitExceeded = rpo.CheckLimitExceededForToday(userDetails.Id),
                     };
                 }
                 else
                 {
                     upr.Message = "User Profile Not Found.";
-                    upr.ResponseObj = new UserProfileResponse()
+                    upr.ResponseObj = new RequestedProfileResponse()
                     {
-                        UserProfileDetails = null,
-                        UserProfilePictures = null
+                        LimitExceeded = false
                     };
                 }
 
@@ -116,10 +59,62 @@ namespace ReshimgathiServices.Controllers
                 upr.Message = "Internal Server error. Please contact admin or try after some time.";
                 upr.AdditionalMessage = e.Message;
                 upr.HttpStatus = HttpStatusCode.InternalServerError.ToString();
-                upr.ResponseObj = new UserProfileResponse()
+                upr.ResponseObj = new RequestedProfileResponse()
                 {
-                    UserProfileDetails = null,
-                    UserProfilePictures = null
+                    LimitExceeded = false
+                };
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, upr);
+        }
+
+
+        /// <summary>
+        /// Get user Requested Profiles based on UserProfileId
+        /// </summary>
+        /// <returns></returns>
+        [Route("all/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetAllRequests(Guid id)
+        {
+            Response<AllRequestedProfileResponse> upr = new Response<AllRequestedProfileResponse>();
+            try
+            {
+                UserProfileOperations uop = new UserProfileOperations();
+                RequestedProfileOperations rpo = new RequestedProfileOperations();
+                var userDetails = uop.GetUserProfileDetails(id);
+
+                if (userDetails != null)
+                {
+                    upr.Message = "User Profile found.";
+                    upr.HttpStatus = HttpStatusCode.OK.ToString();
+                    upr.ResponseObj = new AllRequestedProfileResponse()
+                    {
+                        RequestedProfiles = rpo.GetAllRequestedProfiles(userDetails.Id),
+                    };
+                }
+                else
+                {
+                    upr.Message = "User Profile Not Found.";
+                    upr.ResponseObj = new AllRequestedProfileResponse()
+                    {
+                        RequestedProfiles = null
+                    };
+                }
+
+                upr.AdditionalMessage = "Additional note found here.";
+                upr.HttpStatus = HttpStatusCode.OK.ToString();
+                upr.Success = true;
+            }
+            catch (Exception e)
+            {
+                upr.Success = false;
+                upr.Message = "Internal Server error. Please contact admin or try after some time.";
+                upr.AdditionalMessage = e.Message;
+                upr.HttpStatus = HttpStatusCode.InternalServerError.ToString();
+                upr.ResponseObj = new AllRequestedProfileResponse()
+                {
+                    RequestedProfiles = null
                 };
             }
 

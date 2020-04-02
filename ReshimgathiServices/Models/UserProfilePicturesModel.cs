@@ -7,12 +7,12 @@ namespace ReshimgathiServices.Models
 {
     public class UserProfilePicturesModel
     {
-        public List<UserProfilePicture> Select(Guid? userProfileId)
+        public List<UserProfilePicture> Select(Guid userProfileId)
         {
             using (ReshimgathiDBContext db = new ReshimgathiDBContext())
             {
-                var response = db.UserProfilePictures.Where(x => x.Status == 1).ToList();
-
+                var response = db.UserProfilePictures.Where(x => x.UserProfileId == userProfileId).ToList();
+                //db.UserProfilePictures.Where(x => x.UserProfileId.ToString().ToUpper() == userProfileId.ToString().ToUpper()).ToList();
                 return response;
             }
         }

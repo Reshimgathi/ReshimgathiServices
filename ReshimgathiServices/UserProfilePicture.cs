@@ -15,7 +15,7 @@ namespace ReshimgathiServices
     public partial class UserProfilePicture
     {
         public System.Guid Id { get; set; }
-        public Nullable<System.Guid> UserProfileId { get; set; }
+        public System.Guid UserProfileId { get; set; }
         public string ImageURL { get; set; }
         public bool IsDefaultPicture { get; set; }
         public Nullable<byte> Status { get; set; }

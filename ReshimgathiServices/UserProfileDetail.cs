@@ -25,7 +25,7 @@ namespace ReshimgathiServices
         }
     
         public System.Guid Id { get; set; }
-        public Nullable<int> RegistrationId { get; set; }
+        public int RegistrationId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -35,6 +35,7 @@ namespace ReshimgathiServices
         public bool IsAlternateMobileVerified { get; set; }
         public string EmailId { get; set; }
         public bool IsEmailVerified { get; set; }
+        public bool Gender { get; set; }
         public Nullable<byte> Status { get; set; }
         public string Religion { get; set; }
         public string Caste { get; set; }

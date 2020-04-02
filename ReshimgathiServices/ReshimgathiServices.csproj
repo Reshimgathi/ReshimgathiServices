@@ -184,11 +184,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Business\FavouritesOperations.cs" />
     <Compile Include="Business\LoginOperations.cs" />
+    <Compile Include="Business\RequestedProfileOperations.cs" />
     <Compile Include="Business\UserProfilePicturesOperations.cs" />
     <Compile Include="CatchException.cs" />
+    <Compile Include="Controllers\FavouritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\ProfilePicturesController.cs" />
+    <Compile Include="Controllers\RequestedProfilesController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Favourite.cs">
@@ -208,9 +214,13 @@
     <Compile Include="MembershipPlan.cs">
       <DependentUpon>ReshimgathiMatrimony.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FavouriteModel.cs" />
+    <Compile Include="Models\Favourites.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Business\UserProfileOperations.cs" />
     <Compile Include="Models\ProfilePictures.cs" />
+    <Compile Include="Models\RequestedProfileModel.cs" />
+    <Compile Include="Models\RequestedProfiles.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserProfilePicturesModel.cs" />
@@ -237,7 +247,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReshimgathiMatrimony.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Responses\FavouriteResponse.cs" />
     <Compile Include="Responses\LoginResponse.cs" />
+    <Compile Include="Responses\ProfilePicturesResponse.cs" />
+    <Compile Include="Responses\RequestedProfileResponse.cs" />
     <Compile Include="Responses\Response.cs" />
     <Compile Include="Responses\UserProfileDetails.cs" />
     <Compile Include="Responses\UserProfileResponse.cs" />

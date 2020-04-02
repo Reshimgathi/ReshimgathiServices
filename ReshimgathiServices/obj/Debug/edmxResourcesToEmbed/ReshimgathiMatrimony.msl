@@ -142,6 +142,7 @@
           <ScalarProperty Name="Caste" ColumnName="Caste" />
           <ScalarProperty Name="Religion" ColumnName="Religion" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
           <ScalarProperty Name="EmailId" ColumnName="EmailId" />
           <ScalarProperty Name="IsAlternateMobileVerified" ColumnName="IsAlternateMobileVerified" />
