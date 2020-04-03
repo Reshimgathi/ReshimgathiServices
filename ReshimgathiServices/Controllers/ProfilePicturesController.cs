@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using ReshimgathiServices.Business;
 using ReshimgathiServices.Responses;
+using Swashbuckle.Swagger.Annotations;
 
 namespace ReshimgathiServices.Controllers
 {
@@ -22,6 +23,7 @@ namespace ReshimgathiServices.Controllers
         /// <returns></returns>
         [Route("get/{id}")]
         [HttpGet]
+        [SwaggerResponse(HttpStatusCode.OK, "Verify Login Details.", typeof(Response<ProfilePicturesResponse>))]
         public HttpResponseMessage GetUserProfilePictures(Guid id)
         {
             Response<ProfilePicturesResponse> uppr = new Response<ProfilePicturesResponse>();

@@ -18,6 +18,24 @@ namespace ReshimgathiServices.Business
             return favourites;
         }
 
+        public bool SaveFavouriteProfile(Favourites favourite)
+        {
+            FavouriteModel upm = new FavouriteModel();
+            var savedId = upm.Save(favourite);
+
+            if (savedId != Guid.Empty)
+                return true;
+
+            return false;
+        }
+
+        public bool DeleteFavouriteProfile(Favourites favourite)
+        {
+            FavouriteModel upm = new FavouriteModel();
+
+            return upm.Delete(favourite);
+        }
+
         private List<Favourites> MappingFavouritesProfiles(List<Favourite> favs)
         {
             List<Favourites> favourites = new List<Favourites>();

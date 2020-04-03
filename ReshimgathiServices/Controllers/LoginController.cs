@@ -5,6 +5,7 @@ using System.Web.Http;
 using ReshimgathiServices.Business;
 using ReshimgathiServices.Requests;
 using ReshimgathiServices.Responses;
+using Swashbuckle.Swagger.Annotations;
 
 namespace ReshimgathiServices.Controllers
 {
@@ -21,6 +22,7 @@ namespace ReshimgathiServices.Controllers
         /// <returns></returns>
         [Route("verify")]
         [HttpPost]
+        [SwaggerResponse(HttpStatusCode.OK, "Verify Login Details.", typeof(Response<LoginResponse>))]
         public HttpResponseMessage VerifyLoginDetails(LoginRequest req)
         {
             Response<LoginResponse> lor = new Response<LoginResponse>();

@@ -18,4 +18,16 @@ namespace ReshimgathiServices.Responses
         [JsonProperty("requestedprofiles")]
         public List<RequestedProfiles> RequestedProfiles { get; set; }
     }
+
+    public class SaveRequestedProfileResponse
+    {
+        [JsonProperty("requestedprofilessaved")]
+        public bool RequestedProfilesSaved { get; set; }
+    }
+
+    public class RemoveRequestedProfileResponse
+    {
+        [JsonProperty("requestedprofilesremoved")]
+        public bool RequestedProfilesRemoved { get; set; }
+    }
 }

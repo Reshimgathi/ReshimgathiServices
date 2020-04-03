@@ -1,5 +1,6 @@
 ﻿using ReshimgathiServices.Business;
 using ReshimgathiServices.Responses;
+using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace ReshimgathiServices.Controllers
         /// <returns></returns>
         [Route("profile/{id}")]
         [HttpGet]
+        [SwaggerResponse(HttpStatusCode.OK, "Get User Profile Details By User Profile Id.", typeof(Response<UserProfileResponse>))]
         public HttpResponseMessage GetUserProfile(Guid id)
         {
             Response<UserProfileResponse> upr = new Response<UserProfileResponse>();
@@ -77,6 +79,7 @@ namespace ReshimgathiServices.Controllers
         /// <returns></returns>
         [Route("registration/{id}")]
         [HttpGet]
+        [SwaggerResponse(HttpStatusCode.OK, "Get User Profile Details By User Registration Id.", typeof(Response<UserProfileResponse>))]
         public HttpResponseMessage GetUserProfileByRegistrationId(int id)
         {
             Response<UserProfileResponse> upr = new Response<UserProfileResponse>();

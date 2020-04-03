@@ -31,6 +31,24 @@ namespace ReshimgathiServices.Business
             return requestDetails;
         }
 
+        public bool Save(RequestedProfiles req)
+        {
+            RequestedProfileModel upm = new RequestedProfileModel();
+            var savedId = upm.Save(req);
+
+            if (savedId != Guid.Empty)
+                return true;
+
+            return false;
+        }
+
+        public bool Delete(RequestedProfiles req)
+        {
+            RequestedProfileModel upm = new RequestedProfileModel();
+
+            return upm.Delete(req);
+        }
+
         private List<RequestedProfiles> MappingRequestedProfiles(List<RequestContact> details)
         {
             List<RequestedProfiles> requests = new List<RequestedProfiles>();
