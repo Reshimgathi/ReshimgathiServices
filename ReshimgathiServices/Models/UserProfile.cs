@@ -8,7 +8,7 @@ namespace ReshimgathiServices.Models
     public class UserProfile
     {
         public System.Guid Id { get; set; }
-        public Nullable<int> RegistrationId { get; set; }
+        public int RegistrationId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

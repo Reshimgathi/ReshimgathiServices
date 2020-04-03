@@ -26,6 +26,14 @@ namespace ReshimgathiServices.Business
             return user;
         }
 
+        public Guid SaveUserProfileDetails(UserProfile request)
+        {
+            UserProfileModel upm = new UserProfileModel();
+            Guid userProfileId = upm.Save(request);
+
+            return userProfileId;
+        }
+
         private UserProfile MappingUserProfile(UserProfileDetail details)
         {
             UserProfile u1 = new UserProfile() {

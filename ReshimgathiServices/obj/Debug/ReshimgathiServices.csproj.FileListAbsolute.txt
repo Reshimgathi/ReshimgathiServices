@@ -76,3 +76,12 @@ C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServic
 C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\EntityFramework.SqlServer.xml
 C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\Swashbuckle.Core.dll
 C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\WebActivatorEx.dll
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\Microsoft.IdentityModel.Logging.dll
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\Microsoft.IdentityModel.Tokens.dll
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\Microsoft.IdentityModel.Logging.xml
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\Microsoft.IdentityModel.Tokens.xml
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\E\VS-Programs\Organizations\Reshimgathi\ReshimgathiServices\ReshimgathiServices\ReshimgathiServices\obj\Debug\ReshimgathiServices.csprojResolveAssemblyReference.cache

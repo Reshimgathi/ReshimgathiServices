@@ -45,8 +45,10 @@ namespace ReshimgathiServices.Controllers
                     lor.ResponseObj = new LoginResponse()
                     {
                         LoginStatus = true,
-                        UserProfileDetails = uop.GetUserProfileDetails(loginDetails.UserProfileId),
-                        UserProfilePictures = uppo.GetUserProfilePictures(loginDetails.UserProfileId)
+                        Token = TokenManager.GenerateToken(req.Username),
+                        UserProfileId = loginDetails.UserProfileId,
+                        //UserProfileDetails = uop.GetUserProfileDetails(loginDetails.UserProfileId),
+                        //UserProfilePictures = uppo.GetUserProfilePictures(loginDetails.UserProfileId)
                     };
                 } 
                 else
@@ -55,8 +57,10 @@ namespace ReshimgathiServices.Controllers
                     lor.ResponseObj = new LoginResponse()
                     {
                         LoginStatus = false,
-                        UserProfileDetails = null,
-                        UserProfilePictures = null
+                        Token = null,
+                        UserProfileId = Guid.Empty,
+                        //UserProfileDetails = null,
+                        //UserProfilePictures = null
                     };
                 } 
 
@@ -73,12 +77,25 @@ namespace ReshimgathiServices.Controllers
                 lor.ResponseObj = new LoginResponse()
                 {
                     LoginStatus = false,
-                    UserProfileDetails = null,
-                    UserProfilePictures = null
+                    Token = null,
+                    UserProfileId = Guid.Empty,
+                    //UserProfileDetails = null,
+                    //UserProfilePictures = null
                 };
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, lor);
+        }
+
+        
+
+        [Route("getprofiles")]
+        [HttpGet]
+        [RAuthFilter]
+        [SwaggerResponse(HttpStatusCode.OK, "Get All Profiles.", typeof(string))]
+        public HttpResponseMessage GetProfiles()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, "Success");
         }
     }
 }
