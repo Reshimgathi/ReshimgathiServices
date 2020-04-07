@@ -19,8 +19,8 @@ namespace ReshimgathiServices
         public string Username { get; set; }
         public string Password { get; set; }
         public bool IsVerified { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     
         public virtual UserProfileDetail UserProfileDetail { get; set; }
     }

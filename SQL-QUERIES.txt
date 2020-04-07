@@ -63,10 +63,10 @@ INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileN
 	VALUES ('DCAA0CA5-2F3A-461A-90FF-44945A02F254', 100011, 'Amruta','Patil', 9890098900, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
-	VALUES ('83308D1E-C8F5-4F97-9EEC-5612F4BC9244', 100011, 'Kiran','Dagade', 9921027405, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+	VALUES ('83308D1E-C8F5-4F97-9EEC-5612F4BC9244', 100012, 'Kiran','Dagade', 9921027405, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO UserProfileDetails (Id, RegistrationId, FirstName, LastName, MobileNumber, IsMobileVerified, Gender, CreateDate, UpdatedDate) 
-	VALUES ('E7DDE56F-4C10-4C77-8FE7-8853E5045361', 100011, 'Sayali','Dagade', 9420326958, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+	VALUES ('E7DDE56F-4C10-4C77-8FE7-8853E5045361', 100013, 'Sayali','Dagade', 9420326958, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 
 
@@ -134,7 +134,7 @@ Drop table UserProfileDetails;
 
 
 CREATE TABLE UserProfileDetails(
-	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
 	RegistrationId int NOT NULL,
 	FirstName varchar(255),
 	MiddleName varchar(255),
@@ -146,7 +146,7 @@ CREATE TABLE UserProfileDetails(
 	EmailId varchar(255),
 	IsEmailVerified BIT NOT NULL DEFAULT 0,
 	Gender BIT NOT NULL,
-	Status tinyint,
+	Status tinyint DEFAULT 1,
 	Religion varchar(255),
 	Caste varchar(255),
 	SubCaste varchar(255),
@@ -201,65 +201,65 @@ CREATE TABLE UserProfileDetails(
 	IsLiveOnBoarding BIT NOT NULL DEFAULT 1,
 	IsPaidProfile  BIT NOT NULL DEFAULT 0,
 	FreeTrialUser  BIT NOT NULL DEFAULT 1,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 
 ----------------------------------------------------------------------
 
 CREATE TABLE Login (
-    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+    Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
     UserProfileId UNIQUEIDENTIFIER NOT NUll FOREIGN KEY REFERENCES UserProfileDetails(Id),
     Username varchar(255),
 	Password varchar(255),
 	IsVerified BIT  NOT NULL  DEFAULT 0,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 
 ----------------------------------------------------------------------
 
 CREATE TABLE PaymentInformation(
-	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
 	UserProfileId UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	PaymentStartDate datetime,
 	PaymentEndDate datetime,
 	AmountPaid int,
 	UserProfileExpired BIT NOT NULL DEFAULT 0,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 ----------------------------------------------------------------------
 
 CREATE TABLE MembershipPlans(
-	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
 	NoOfMonths tinyint,
 	Fees int,
 	IsPlanExpired BIT NOT NULL DEFAULT 0,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 ----------------------------------------------------------------------
 
 
 CREATE TABLE UserProfilePictures(
-	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
 	UserProfileId UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	ImageURL varchar(255),
 	IsDefaultPicture BIT NOT NULL DEFAULT 0,
 	Status tinyint,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 ----------------------------------------------------------------------
 
 CREATE TABLE RequestContacts(
-	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+	Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
 	RequestFrom UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
 	RequestTo1 varchar(255),
 	RequestTo2 varchar(255),
@@ -267,25 +267,25 @@ CREATE TABLE RequestContacts(
 	RequestTo4 varchar(255),
 	RequestTo5 varchar(255),
 	IsRequestServed  BIT NOT NULL DEFAULT 0,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 ----------------------------------------------------------------------
  CREATE TABLE Favourites(
- 	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+ 	Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
  	UserProfileId UNIQUEIDENTIFIER  NOT NULL FOREIGN KEY REFERENCES UserProfileDetails(Id),
  	FavouriteProfileId varchar(255),
  	IsStillFavourite BIT NOT NULL DEFAULT 1,
- 	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+ 	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
  );
 
 ----------------------------------------------------------------------
 
 --//Old Tables below - No use. #Ignore.
 CREATE TABLE RegistrationPhase1 (
-    Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+    Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
     LoginId Uniqueidentifier,
     ReshimgathiId varchar(255),
     FirstName varchar(255),
@@ -294,12 +294,25 @@ CREATE TABLE RegistrationPhase1 (
 	IsPhoneVerified BIT   NULL   DEFAULT 0,
 	EmailId varchar(255),
 	IsEmailVerified BIT   NULL   DEFAULT 0,
-	CreateDate datetime DEFAULT CURRENT_TIMESTAMP,
-	UpdatedDate datetime DEFAULT CURRENT_TIMESTAMP
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 
 INSERT INTO RegistrationPhase1 VALUES (default, '97071193-C9A6-4897-B5DC-C7D812CDBA66', 'RM-000000', 'Amit', 'Patange', '7709981177', 0, 'amitpatange88@gmail.com', 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+
+
+
+CREATE TABLE RegistrationPhase1 (
+    Id UNIQUEIDENTIFIER PRIMARY KEY NOT NULL default NEWID(),
+	Mobile varchar(255) NOT NULL,
+	IsMobileVerified BIT NOT NULL DEFAULT 0,
+	CreateDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	UpdatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO RegistrationPhase1 (Mobile) VALUES ('7709981177')
+
 
 
 
@@ -328,3 +341,45 @@ drop procedure GetLoginDetailsProc
 	SELECT * FROM GetLoginDetails('amit')
 
 	exec GetLoginDetailsProc 'amit'
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+[httppost]
+UserProfile RegistrationPhase1
+//Request Obj:
+{
+  "registration": {
+    "FirstName": "string",
+    "LastName": "string",
+    "MobileNumber": "string",
+    "EmailId": "string",
+    "Gender": true,
+    "Logins": [
+      {
+        "Username": "string",
+        "Password": "string",
+        "IsVerified": true,
+      }
+    ]
+  }
+}
+
+
+{
+  "registration": {
+    "FirstName": "Gokul",
+    "LastName": "Vadje",
+    "MobileNumber": "9975683336",
+    "EmailId": "gokul.vadje@gmail.com",
+    "Gender": "true",
+    "Logins": [
+      {
+        "Username": "9975683336",
+        "Password": "abcd",
+        "IsVerified": "true"
+      }
+    ]
+  }
+}

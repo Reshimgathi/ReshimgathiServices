@@ -91,8 +91,8 @@ namespace ReshimgathiServices
         public bool IsLiveOnBoarding { get; set; }
         public bool IsPaidProfile { get; set; }
         public bool FreeTrialUser { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favourite> Favourites { get; set; }

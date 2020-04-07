@@ -18,8 +18,8 @@ namespace ReshimgathiServices
         public System.Guid UserProfileId { get; set; }
         public string FavouriteProfileId { get; set; }
         public bool IsStillFavourite { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     
         public virtual UserProfileDetail UserProfileDetail { get; set; }
     }

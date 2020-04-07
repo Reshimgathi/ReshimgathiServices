@@ -22,8 +22,8 @@ namespace ReshimgathiServices
         public string RequestTo4 { get; set; }
         public string RequestTo5 { get; set; }
         public bool IsRequestServed { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     
         public virtual UserProfileDetail UserProfileDetail { get; set; }
     }

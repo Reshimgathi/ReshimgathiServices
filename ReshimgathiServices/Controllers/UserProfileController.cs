@@ -6,6 +6,7 @@ using ReshimgathiServices.Business;
 using ReshimgathiServices.Responses;
 using Swashbuckle.Swagger.Annotations;
 using ReshimgathiServices.Models;
+using System.Collections.Generic;
 
 namespace ReshimgathiServices.Controllers
 {
@@ -129,41 +130,43 @@ namespace ReshimgathiServices.Controllers
         }
 
         /// <summary>
-        /// Get user profile based on given profileid
+        /// User Profile Registration in Phase I.
         /// </summary>
         /// <returns></returns>
-        [Route("profile/{id}")]
+        [Route("registration/{id}")]
         [HttpPost]
-        [SwaggerResponse(HttpStatusCode.OK, "Save User Profile Details By User Profile Id.", typeof(bool))]
-        public HttpResponseMessage SaveUserProfile(UserProfile request)
+        [SwaggerResponse(HttpStatusCode.OK, "Register User Profile Details in Phase I.", typeof(Response<UserProfileSaveResponse>))]
+        public HttpResponseMessage RegisterUserProfileInPhaseI(UserRegistration request)
         {
             Response<UserProfileSaveResponse> upr = new Response<UserProfileSaveResponse>();
-            bool isProfileSaved = false;
+            bool isProfileCreated = false;
             try
             {
                 UserProfileOperations uop = new UserProfileOperations();
+                LoginOperations lop = new LoginOperations();
 
-                var userDetails = uop.GetUserProfileDetails(request.Id);
+                //User profile registration firsttime. This is not the first time save.
+                Guid userProfileId = uop.SaveUserProfileDetails(request.Profile);
 
-                //User already registered. This is not the first time save.
-                if (userDetails != null)
+                Guid loginId = lop.SaveLoginDetails(request.LoginReq, userProfileId);
+
+                if (userProfileId != Guid.Empty && loginId != Guid.Empty)
                 {
-                    Guid userProfileId = uop.SaveUserProfileDetails(request);
-                    upr.Message = "User Profile found.";
-                    upr.HttpStatus = HttpStatusCode.OK.ToString();
+                    isProfileCreated = true;
+                    upr.Message = "User Profile is Created.";
                     upr.ResponseObj = new UserProfileSaveResponse()
                     {
-                        IsProfileSaved = isProfileSaved,
+                        IsProfileSaved = isProfileCreated,
                         UserProfileId = userProfileId
                     };
                 }
                 else
                 {
-                    upr.Message = "User Profile Not Found.";
+                    upr.Message = "User Profile is not saved. Server has rejected your request. Please contact administrator. ";
                     upr.ResponseObj = new UserProfileSaveResponse()
                     {
-                        IsProfileSaved = isProfileSaved,
-                        UserProfileId = Guid.Empty
+                        IsProfileSaved = isProfileCreated,
+                        UserProfileId = userProfileId
                     };
                 }
 
@@ -179,7 +182,81 @@ namespace ReshimgathiServices.Controllers
                 upr.HttpStatus = HttpStatusCode.InternalServerError.ToString();
                 upr.ResponseObj = new UserProfileSaveResponse()
                 {
-                    IsProfileSaved = isProfileSaved,
+                    IsProfileSaved = isProfileCreated,
+                    UserProfileId = Guid.Empty
+                };
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, upr);
+        }
+
+        /// <summary>
+        /// User Profile Registration in Phase I.
+        /// </summary>
+        /// <returns></returns>
+        [Route("registration/{id}")]
+        [HttpPut]
+        [SwaggerResponse(HttpStatusCode.OK, "Register User Profile Details in Phase I.", typeof(Response<UserProfileUpdateResponse>))]
+        public HttpResponseMessage RegisterUserProfileInPhaseII(ProfileUpdation request)
+        {
+            Response<UserProfileUpdateResponse> upr = new Response<UserProfileUpdateResponse>();
+            bool isProfileUpdated = false;
+            try
+            {
+                UserProfileOperations uop = new UserProfileOperations();
+
+                var userDetails = uop.GetUserProfileDetails(request.Profile.Id);
+                if(userDetails == null)
+                {
+                    upr.Message = "User Profile Not Found.";
+                    upr.ResponseObj = new UserProfileUpdateResponse()
+                    {
+                        IsProfileUpdated = isProfileUpdated,
+                        UserProfileId = request.Profile.Id
+                    };
+                    upr.AdditionalMessage = "Additional note found here.";
+                    upr.HttpStatus = HttpStatusCode.OK.ToString();
+                    upr.Success = true;
+
+                    return Request.CreateResponse(HttpStatusCode.OK, upr);
+                }
+
+                //User profile registration firsttime. This is not the first time save.
+                Guid userProfileId = uop.UpdateUserProfileDetails(request.Profile, request.TabId);
+
+                if (userProfileId != Guid.Empty)
+                {
+                    isProfileUpdated = true;
+                    upr.Message = "User Profile is Updated.";
+                    upr.ResponseObj = new UserProfileUpdateResponse()
+                    {
+                        IsProfileUpdated = isProfileUpdated,
+                        UserProfileId = userProfileId
+                    };
+                }
+                else
+                {
+                    upr.Message = "User Profile is not updated. Server has rejected your request. Please contact administrator. ";
+                    upr.ResponseObj = new UserProfileUpdateResponse()
+                    {
+                        IsProfileUpdated = isProfileUpdated,
+                        UserProfileId = userProfileId
+                    };
+                }
+
+                upr.AdditionalMessage = "Additional note found here.";
+                upr.HttpStatus = HttpStatusCode.OK.ToString();
+                upr.Success = true;
+            }
+            catch (Exception e)
+            {
+                upr.Success = false;
+                upr.Message = "Internal Server error. Please contact admin or try after some time.";
+                upr.AdditionalMessage = e.Message;
+                upr.HttpStatus = HttpStatusCode.InternalServerError.ToString();
+                upr.ResponseObj = new UserProfileUpdateResponse()
+                {
+                    IsProfileUpdated = isProfileUpdated,
                     UserProfileId = Guid.Empty
                 };
             }

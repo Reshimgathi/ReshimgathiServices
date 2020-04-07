@@ -26,12 +26,80 @@ namespace ReshimgathiServices.Business
             return user;
         }
 
-        public Guid SaveUserProfileDetails(UserProfile request)
+        public Guid SaveUserProfileDetails(UserProfileDetail request)
         {
-            UserProfileModel upm = new UserProfileModel();
-            Guid userProfileId = upm.Save(request);
+            Guid userProfileId = Guid.Empty;
+            try
+            {
+                UserProfileModel upm = new UserProfileModel();
+                userProfileId = upm.Save(request);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
 
             return userProfileId;
+        }
+
+        public Guid UpdateUserProfileDetails(UserProfileDetail request, int tabId)
+        {
+            Guid userProfileId = Guid.Empty;
+            try
+            {
+                UserProfileModel upm = new UserProfileModel();
+
+                switch (tabId)
+                {
+                    case 1:
+                        //Update Personal Details
+                        userProfileId = upm.UpdatePersonalDetails(request);
+                        break;
+                    case 2:
+                        //Update Horoscope Details
+                        userProfileId = upm.UpdateHoroscopeDetails(request);
+                        break;
+                    case 3:
+                        //Update Educational Details
+                        userProfileId = upm.UpdateEducationalDetails(request);
+                        break;
+                    case 4:
+                        //Update Family Background Details
+                        userProfileId = upm.UpdateFamilyBackgroundDetails(request);
+                        break;
+                    case 5:
+                        //Update Expectation Details
+                        userProfileId = upm.UpdateExpectationDetails(request);
+                        break;
+                    default:
+                        // code block
+                        break;
+                }
+                
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return userProfileId;
+        }
+
+        public UserRegistration PrepareRequestObject(UserRegistration request)
+        {
+
+            var data = request.Profile.Logins.Select(x => x.Id == Guid.Empty).FirstOrDefault();
+           
+            return request;
+        }
+
+
+        public bool UpdateUserProfileDetails(UserProfile request)
+        {
+            UserProfileModel upm = new UserProfileModel();
+            bool isRecordUpdated = upm.Update(request);
+
+            return isRecordUpdated;
         }
 
         private UserProfile MappingUserProfile(UserProfileDetail details)
@@ -48,6 +116,7 @@ namespace ReshimgathiServices.Business
                 IsAlternateMobileVerified = details.IsAlternateMobileVerified,
                 EmailId = details.EmailId,
                 IsEmailVerified = details.IsEmailVerified,
+                Gender = details.Gender,
                 Status = details.Status,
                 Religion = details.Religion,
                 Caste = details.Caste,

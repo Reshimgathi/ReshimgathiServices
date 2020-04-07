@@ -20,8 +20,8 @@ namespace ReshimgathiServices
         public Nullable<System.DateTime> PaymentEndDate { get; set; }
         public Nullable<int> AmountPaid { get; set; }
         public bool UserProfileExpired { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     
         public virtual UserProfileDetail UserProfileDetail { get; set; }
     }

@@ -39,5 +39,33 @@ namespace ReshimgathiServices.Models
                 return user;
             }
         }
+
+        public Guid Save(Login req, Guid userProfileId)
+        {
+            try
+            {
+                using (ReshimgathiDBContext db = new ReshimgathiDBContext())
+                {
+                    req.Id = Guid.NewGuid();
+                    req.UserProfileId = userProfileId;
+                    req.CreateDate = DateTime.Now;
+                    req.UpdatedDate = DateTime.Now;
+
+                    var response = db.Logins.Add(req);
+                    db.SaveChanges();
+
+                    if (response != null)
+                    {
+                        return response.Id;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
+            return Guid.Empty;
+        }
     }
 }

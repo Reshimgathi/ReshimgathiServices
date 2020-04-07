@@ -18,7 +18,7 @@ namespace ReshimgathiServices
         public Nullable<byte> NoOfMonths { get; set; }
         public Nullable<int> Fees { get; set; }
         public bool IsPlanExpired { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     }
 }

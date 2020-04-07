@@ -22,4 +22,13 @@ namespace ReshimgathiServices.Responses
         [JsonProperty("userprofileid")]
         public Guid UserProfileId { get; set; }
     }
+
+    public class UserProfileUpdateResponse
+    {
+        [JsonProperty("isprofileupdated")]
+        public bool IsProfileUpdated { get; set; }
+
+        [JsonProperty("userprofileid")]
+        public Guid UserProfileId { get; set; }
+    }
 }

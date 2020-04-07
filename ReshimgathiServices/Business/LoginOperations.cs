@@ -1,4 +1,5 @@
-﻿using ReshimgathiServices.Models;
+﻿using System;
+using ReshimgathiServices.Models;
 
 namespace ReshimgathiServices.Business
 {
@@ -12,6 +13,22 @@ namespace ReshimgathiServices.Business
             Login d1 = obj.Select(username, password);
 
             return d1;
+        }
+
+        public Guid SaveLoginDetails(Login request, Guid userProfileId)
+        {
+            Guid loginId = Guid.Empty;
+            try
+            {
+                LoginModel obj = new LoginModel();
+                loginId = obj.Save(request, userProfileId);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
+            return loginId;
         }
     }
 }

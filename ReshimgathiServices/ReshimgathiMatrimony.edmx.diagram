@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7eea1c563483419a8532e0e087900ecf" Name="Diagram1" ZoomLevel="58" DisplayType="true">
+      <Diagram DiagramId="7eea1c563483419a8532e0e087900ecf" Name="Diagram1" ZoomLevel="57" DisplayType="true">
         <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.Favourite" Width="1.5" PointX="3" PointY="12.125" />
-        <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.Login" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.Login" Width="1.5" PointX="3" PointY="5.5" />
         <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.MembershipPlan" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.PaymentInformation" Width="1.5" PointX="3" PointY="15.25" />
-        <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.RequestContact" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.RequestContact" Width="1.5" PointX="3" PointY="1.625" />
         <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.UserProfileDetail" Width="1.5" PointX="0.75" PointY="2.25" />
-        <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.UserProfilePicture" Width="1.5" PointX="3" PointY="5" />
-        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__6319B466" />
-        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__42ACE4D4" />
-        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__4959E263" />
-        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__5C6CB6D7" />
-        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__55BFB948" />
+        <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.UserProfilePicture" Width="1.5" PointX="3" PointY="8.875" />
+        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__2022C2A6" />
+        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__7FB5F314" />
+        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__0662F0A3" />
+        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__1975C517" />
+        <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__12C8C788" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -242,6 +242,7 @@
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserProfilePicturesModel.cs" />
+    <Compile Include="Models\UserRegistration.cs" />
     <Compile Include="PaymentInformation.cs">
       <DependentUpon>ReshimgathiMatrimony.tt</DependentUpon>
     </Compile>
@@ -274,6 +275,7 @@
     <Compile Include="Responses\UserProfileDetails.cs" />
     <Compile Include="Responses\UserProfileResponse.cs" />
     <Compile Include="SnatchException.cs" />
+    <Compile Include="Swagger\SwaggerUserRegistration.cs" />
     <Compile Include="TokenManager.cs" />
     <Compile Include="UserProfileDetail.cs">
       <DependentUpon>ReshimgathiMatrimony.tt</DependentUpon>

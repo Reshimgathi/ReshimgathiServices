@@ -19,8 +19,8 @@ namespace ReshimgathiServices
         public string ImageURL { get; set; }
         public bool IsDefaultPicture { get; set; }
         public Nullable<byte> Status { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     
         public virtual UserProfileDetail UserProfileDetail { get; set; }
     }

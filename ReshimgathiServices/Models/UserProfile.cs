@@ -5,6 +5,14 @@ using System.Web;
 
 namespace ReshimgathiServices.Models
 {
+    public class UserProfileRegistrationPhaseI
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MobileNumber { get; set; }
+        public bool Gender { get; set; }
+    }
+
     public class UserProfile
     {
         public System.Guid Id { get; set; }
@@ -18,6 +26,7 @@ namespace ReshimgathiServices.Models
         public bool IsAlternateMobileVerified { get; set; }
         public string EmailId { get; set; }
         public bool IsEmailVerified { get; set; }
+        public bool Gender { get; set; }
         public Nullable<byte> Status { get; set; }
         public string Religion { get; set; }
         public string Caste { get; set; }

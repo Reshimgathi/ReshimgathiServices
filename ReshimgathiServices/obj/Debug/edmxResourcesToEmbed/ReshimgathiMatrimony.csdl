@@ -21,23 +21,23 @@
     <EntitySet Name="RequestContacts" EntityType="ReshimgathiMatrimonyModel.RequestContact" />
     <EntitySet Name="UserProfileDetails" EntityType="ReshimgathiMatrimonyModel.UserProfileDetail" />
     <EntitySet Name="UserProfilePictures" EntityType="ReshimgathiMatrimonyModel.UserProfilePicture" />
-    <AssociationSet Name="FK__Favourite__UserP__6319B466" Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__6319B466">
+    <AssociationSet Name="FK__Favourite__UserP__2022C2A6" Association="ReshimgathiMatrimonyModel.FK__Favourite__UserP__2022C2A6">
       <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
       <End Role="Favourite" EntitySet="Favourites" />
     </AssociationSet>
-    <AssociationSet Name="FK__Login__UserProfi__42ACE4D4" Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__42ACE4D4">
+    <AssociationSet Name="FK__Login__UserProfi__7FB5F314" Association="ReshimgathiMatrimonyModel.FK__Login__UserProfi__7FB5F314">
       <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
       <End Role="Login" EntitySet="Logins" />
     </AssociationSet>
-    <AssociationSet Name="FK__PaymentIn__UserP__4959E263" Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__4959E263">
+    <AssociationSet Name="FK__PaymentIn__UserP__0662F0A3" Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__0662F0A3">
       <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
       <End Role="PaymentInformation" EntitySet="PaymentInformations" />
     </AssociationSet>
-    <AssociationSet Name="FK__RequestCo__Reque__5C6CB6D7" Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__5C6CB6D7">
+    <AssociationSet Name="FK__RequestCo__Reque__1975C517" Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__1975C517">
       <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
       <End Role="RequestContact" EntitySet="RequestContacts" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserProfi__UserP__55BFB948" Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__55BFB948">
+    <AssociationSet Name="FK__UserProfi__UserP__12C8C788" Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__12C8C788">
       <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
       <End Role="UserProfilePicture" EntitySet="UserProfilePictures" />
     </AssociationSet>
@@ -50,9 +50,9 @@
     <Property Name="UserProfileId" Type="Guid" Nullable="false" />
     <Property Name="FavouriteProfileId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="IsStillFavourite" Type="Boolean" Nullable="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__6319B466" FromRole="Favourite" ToRole="UserProfileDetail" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__2022C2A6" FromRole="Favourite" ToRole="UserProfileDetail" />
   </EntityType>
   <EntityType Name="Login">
     <Key>
@@ -63,9 +63,9 @@
     <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="IsVerified" Type="Boolean" Nullable="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__42ACE4D4" FromRole="Login" ToRole="UserProfileDetail" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__7FB5F314" FromRole="Login" ToRole="UserProfileDetail" />
   </EntityType>
   <EntityType Name="MembershipPlan">
     <Key>
@@ -75,8 +75,8 @@
     <Property Name="NoOfMonths" Type="Byte" />
     <Property Name="Fees" Type="Int32" />
     <Property Name="IsPlanExpired" Type="Boolean" Nullable="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="PaymentInformation">
     <Key>
@@ -88,9 +88,9 @@
     <Property Name="PaymentEndDate" Type="DateTime" Precision="3" />
     <Property Name="AmountPaid" Type="Int32" />
     <Property Name="UserProfileExpired" Type="Boolean" Nullable="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__4959E263" FromRole="PaymentInformation" ToRole="UserProfileDetail" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__0662F0A3" FromRole="PaymentInformation" ToRole="UserProfileDetail" />
   </EntityType>
   <EntityType Name="RequestContact">
     <Key>
@@ -104,9 +104,9 @@
     <Property Name="RequestTo4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="RequestTo5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="IsRequestServed" Type="Boolean" Nullable="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__5C6CB6D7" FromRole="RequestContact" ToRole="UserProfileDetail" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__1975C517" FromRole="RequestContact" ToRole="UserProfileDetail" />
   </EntityType>
   <EntityType Name="UserProfileDetail">
     <Key>
@@ -179,13 +179,13 @@
     <Property Name="IsLiveOnBoarding" Type="Boolean" Nullable="false" />
     <Property Name="IsPaidProfile" Type="Boolean" Nullable="false" />
     <Property Name="FreeTrialUser" Type="Boolean" Nullable="false" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Favourites" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__6319B466" FromRole="UserProfileDetail" ToRole="Favourite" />
-    <NavigationProperty Name="Logins" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__42ACE4D4" FromRole="UserProfileDetail" ToRole="Login" />
-    <NavigationProperty Name="PaymentInformations" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__4959E263" FromRole="UserProfileDetail" ToRole="PaymentInformation" />
-    <NavigationProperty Name="RequestContacts" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__5C6CB6D7" FromRole="UserProfileDetail" ToRole="RequestContact" />
-    <NavigationProperty Name="UserProfilePictures" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__55BFB948" FromRole="UserProfileDetail" ToRole="UserProfilePicture" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Favourites" Relationship="ReshimgathiMatrimonyModel.FK__Favourite__UserP__2022C2A6" FromRole="UserProfileDetail" ToRole="Favourite" />
+    <NavigationProperty Name="Logins" Relationship="ReshimgathiMatrimonyModel.FK__Login__UserProfi__7FB5F314" FromRole="UserProfileDetail" ToRole="Login" />
+    <NavigationProperty Name="PaymentInformations" Relationship="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__0662F0A3" FromRole="UserProfileDetail" ToRole="PaymentInformation" />
+    <NavigationProperty Name="RequestContacts" Relationship="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__1975C517" FromRole="UserProfileDetail" ToRole="RequestContact" />
+    <NavigationProperty Name="UserProfilePictures" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__12C8C788" FromRole="UserProfileDetail" ToRole="UserProfilePicture" />
   </EntityType>
   <EntityType Name="UserProfilePicture">
     <Key>
@@ -196,11 +196,11 @@
     <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="IsDefaultPicture" Type="Boolean" Nullable="false" />
     <Property Name="Status" Type="Byte" />
-    <Property Name="CreateDate" Type="DateTime" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__55BFB948" FromRole="UserProfilePicture" ToRole="UserProfileDetail" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserProfileDetail" Relationship="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__12C8C788" FromRole="UserProfilePicture" ToRole="UserProfileDetail" />
   </EntityType>
-  <Association Name="FK__Favourite__UserP__6319B466">
+  <Association Name="FK__Favourite__UserP__2022C2A6">
     <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
     <End Type="ReshimgathiMatrimonyModel.Favourite" Role="Favourite" Multiplicity="*" />
     <ReferentialConstraint>
@@ -212,7 +212,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Login__UserProfi__42ACE4D4">
+  <Association Name="FK__Login__UserProfi__7FB5F314">
     <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
     <End Type="ReshimgathiMatrimonyModel.Login" Role="Login" Multiplicity="*" />
     <ReferentialConstraint>
@@ -224,7 +224,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PaymentIn__UserP__4959E263">
+  <Association Name="FK__PaymentIn__UserP__0662F0A3">
     <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
     <End Type="ReshimgathiMatrimonyModel.PaymentInformation" Role="PaymentInformation" Multiplicity="*" />
     <ReferentialConstraint>
@@ -236,7 +236,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RequestCo__Reque__5C6CB6D7">
+  <Association Name="FK__RequestCo__Reque__1975C517">
     <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
     <End Type="ReshimgathiMatrimonyModel.RequestContact" Role="RequestContact" Multiplicity="*" />
     <ReferentialConstraint>
@@ -248,7 +248,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserProfi__UserP__55BFB948">
+  <Association Name="FK__UserProfi__UserP__12C8C788">
     <End Type="ReshimgathiMatrimonyModel.UserProfileDetail" Role="UserProfileDetail" Multiplicity="1" />
     <End Type="ReshimgathiMatrimonyModel.UserProfilePicture" Role="UserProfilePicture" Multiplicity="*" />
     <ReferentialConstraint>
