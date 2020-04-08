@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace ReshimgathiServices.Controllers
 {
+    [CatchException]
     public class PaymentController : ApiController
     {
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using ReshimgathiServices.Models;
+using ReshimgathiServices.Requests;
 
 namespace ReshimgathiServices.Business
 {
@@ -29,6 +30,28 @@ namespace ReshimgathiServices.Business
             }
 
             return loginId;
+        }
+        public bool VerifyPasswordWithProfileId(ChangePassword req)
+        {
+            bool verifyOldPass = false;
+            try
+            {
+                LoginModel obj = new LoginModel();
+                verifyOldPass = obj.VerifyPassword(req);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
+            return verifyOldPass;
+        }
+
+        public bool ChangePassword(ChangePassword req)
+        {
+            LoginModel obj = new LoginModel();
+
+            return obj.UpdatePassword(req);
         }
     }
 }

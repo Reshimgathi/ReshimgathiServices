@@ -14,4 +14,16 @@ namespace ReshimgathiServices.Requests
         [JsonProperty("password")]
         public string Password { get; set; }
     }
+
+    public class ChangePassword
+    {
+        [JsonProperty("userprofileid")]
+        public Guid UserProfileId { get; set; }
+
+        [JsonProperty("oldpassword")]
+        public string OldPassword { get; set; }
+
+        [JsonProperty("newpassword")]
+        public string NewPassword { get; set; }
+    }
 }

@@ -59,8 +59,6 @@ namespace ReshimgathiServices.Controllers
                         LoginStatus = false,
                         Token = null,
                         UserProfileId = Guid.Empty,
-                        //UserProfileDetails = null,
-                        //UserProfilePictures = null
                     };
                 } 
 
@@ -79,14 +77,60 @@ namespace ReshimgathiServices.Controllers
                     LoginStatus = false,
                     Token = null,
                     UserProfileId = Guid.Empty,
-                    //UserProfileDetails = null,
-                    //UserProfilePictures = null
                 };
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, lor);
         }
 
+        [Route("changepassword")]
+        [HttpPost]
+        [SwaggerResponse(HttpStatusCode.OK, "change My Password.", typeof(Response<ChangePasswordResponse>))]
+        public HttpResponseMessage ChangePassword(ChangePassword request)
+        {
+            Response<ChangePasswordResponse> lor = new Response<ChangePasswordResponse>();
+            bool isPasswordUpdated = false;
+            try
+            {
+                LoginOperations loginOp = new LoginOperations();
+                bool isCredsVerified = loginOp.VerifyPasswordWithProfileId(request);
+
+                if (isCredsVerified)
+                {
+                    isPasswordUpdated = loginOp.ChangePassword(request);
+                    lor.Message = "New Password is updated successfully.";
+                    lor.ResponseObj = new ChangePasswordResponse()
+                    {
+                        Result = isPasswordUpdated
+                    };
+                }
+                else
+                {
+                    lor.Message = "User Not Found !! Please try with correct login Creds.";
+                    lor.ResponseObj = new ChangePasswordResponse()
+                    {
+                        Result = isPasswordUpdated
+                    };
+                }
+
+                lor.AdditionalMessage = "Additional note found here.";
+                lor.HttpStatus = HttpStatusCode.OK.ToString();
+                lor.Success = true;
+            }
+            catch (Exception e)
+            {
+                lor.Success = false;
+                lor.Message = "Internal Server error. Please contact admin or try after some time.";
+                lor.AdditionalMessage = e.Message;
+                lor.HttpStatus = HttpStatusCode.InternalServerError.ToString();
+                lor.ResponseObj = new ChangePasswordResponse()
+                {
+                    Result = isPasswordUpdated
+                };
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, lor);
+        }
         
 
         [Route("getprofiles")]

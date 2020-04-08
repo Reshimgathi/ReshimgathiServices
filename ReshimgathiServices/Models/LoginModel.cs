@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReshimgathiServices.Requests;
+using System;
 using System.Linq;
 
 namespace ReshimgathiServices.Models
@@ -37,6 +38,46 @@ namespace ReshimgathiServices.Models
                 Login user = db.Logins.Where(x => x.Username == username && x.Password == password).FirstOrDefault();
 
                 return user;
+            }
+        }
+
+        public bool VerifyPassword(ChangePassword req)
+        {
+            try
+            {
+                using (ReshimgathiDBContext db = new ReshimgathiDBContext())
+                {
+                    Login user = db.Logins.Where(x => x.UserProfileId == req.UserProfileId && x.Password == req.OldPassword).FirstOrDefault();
+
+                    if(user != null)
+                        return true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
+            return false;
+        }
+
+        public bool UpdatePassword(ChangePassword req)
+        {
+            try
+            {
+                using (ReshimgathiDBContext db = new ReshimgathiDBContext())
+                {
+                    Login user = db.Logins.Where(x => x.UserProfileId == req.UserProfileId && x.Password == req.OldPassword).FirstOrDefault();
+
+                    user.Password = req.NewPassword;
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
             }
         }
 

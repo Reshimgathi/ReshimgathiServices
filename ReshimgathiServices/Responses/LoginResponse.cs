@@ -15,11 +15,10 @@ namespace ReshimgathiServices.Responses
 
         [JsonProperty("userprofileid")]
         public Guid UserProfileId { get; set; }
+    }
 
-        //[JsonProperty("userprofiledetails")]
-        //public UserProfile UserProfileDetails { get; set; }
-
-        //[JsonProperty("userprofilepictures")]
-        //public List<ProfilePicture> UserProfilePictures { get; set; }
+    public class ChangePasswordResponse
+    {
+        public bool Result { get; set; }
     }
 }
