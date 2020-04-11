@@ -133,7 +133,7 @@ namespace ReshimgathiServices.Controllers
         /// User Profile Registration in Phase I.
         /// </summary>
         /// <returns></returns>
-        [Route("registration/{id}")]
+        [Route("registration")]
         [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, "Register User Profile Details in Phase I.", typeof(Response<UserProfileSaveResponse>))]
         public HttpResponseMessage RegisterUserProfileInPhaseI(UserRegistration request)
