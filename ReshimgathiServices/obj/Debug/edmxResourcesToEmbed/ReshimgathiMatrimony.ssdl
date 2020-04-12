@@ -34,6 +34,15 @@
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="OTPVerification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="OTP" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="PaymentInformation">
     <Key>
       <PropertyRef Name="Id" />
@@ -230,6 +239,7 @@
     <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MembershipPlans" EntityType="Self.MembershipPlans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OTPVerification" EntityType="Self.OTPVerification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PaymentInformation" EntityType="Self.PaymentInformation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RequestContacts" EntityType="Self.RequestContacts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserProfileDetails" EntityType="Self.UserProfileDetails" Schema="dbo" store:Type="Tables" />

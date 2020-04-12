@@ -39,6 +39,15 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="OTPVerification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OTP" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="PaymentInformation">
           <Key>
             <PropertyRef Name="Id" />
@@ -235,6 +244,7 @@
           <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MembershipPlans" EntityType="Self.MembershipPlans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTPVerification" EntityType="Self.OTPVerification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentInformation" EntityType="Self.PaymentInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RequestContacts" EntityType="Self.RequestContacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserProfileDetails" EntityType="Self.UserProfileDetails" Schema="dbo" store:Type="Tables" />
@@ -305,6 +315,7 @@
             <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
             <End Role="UserProfilePicture" EntitySet="UserProfilePictures" />
           </AssociationSet>
+          <EntitySet Name="OTPVerifications" EntityType="ReshimgathiMatrimonyModel.OTPVerification" />
           </EntityContainer>
         <EntityType Name="Favourite">
           <Key>
@@ -524,6 +535,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OTPVerification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OTP" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -695,6 +715,16 @@
                 <ScalarProperty Name="IsDefaultPicture" ColumnName="IsDefaultPicture" />
                 <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
                 <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTPVerifications">
+            <EntityTypeMapping TypeName="ReshimgathiMatrimonyModel.OTPVerification">
+              <MappingFragment StoreEntitySet="OTPVerification">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

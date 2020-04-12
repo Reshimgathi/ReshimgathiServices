@@ -211,12 +211,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Business\FavouritesOperations.cs" />
     <Compile Include="Business\LoginOperations.cs" />
+    <Compile Include="Business\OTPOperations.cs" />
     <Compile Include="Business\RequestedProfileOperations.cs" />
     <Compile Include="Business\UserProfilePicturesOperations.cs" />
     <Compile Include="CatchException.cs" />
     <Compile Include="Controllers\FavouritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OTPController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProfilePicturesController.cs" />
     <Compile Include="Controllers\RequestedProfilesController.cs" />
@@ -242,6 +244,7 @@
     <Compile Include="Models\Favourites.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Business\UserProfileOperations.cs" />
+    <Compile Include="Models\OTPModel.cs" />
     <Compile Include="Models\ProfilePictures.cs" />
     <Compile Include="Models\RequestedProfileModel.cs" />
     <Compile Include="Models\RequestedProfiles.cs" />
@@ -249,6 +252,9 @@
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserProfilePicturesModel.cs" />
     <Compile Include="Models\UserRegistration.cs" />
+    <Compile Include="OTPVerification.cs">
+      <DependentUpon>ReshimgathiMatrimony.tt</DependentUpon>
+    </Compile>
     <Compile Include="PaymentInformation.cs">
       <DependentUpon>ReshimgathiMatrimony.tt</DependentUpon>
     </Compile>
@@ -258,6 +264,7 @@
       <DependentUpon>ReshimgathiMatrimony.tt</DependentUpon>
     </Compile>
     <Compile Include="Requests\LoginRequest.cs" />
+    <Compile Include="Requests\OTPRequest.cs" />
     <Compile Include="ReshimgathiMatrimony.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -275,6 +282,7 @@
     </Compile>
     <Compile Include="Responses\FavouriteResponse.cs" />
     <Compile Include="Responses\LoginResponse.cs" />
+    <Compile Include="Responses\OTPResponse.cs" />
     <Compile Include="Responses\ProfilePicturesResponse.cs" />
     <Compile Include="Responses\RequestedProfileResponse.cs" />
     <Compile Include="Responses\Response.cs" />

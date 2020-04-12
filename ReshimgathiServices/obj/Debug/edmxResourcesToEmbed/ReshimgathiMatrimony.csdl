@@ -41,6 +41,7 @@
       <End Role="UserProfileDetail" EntitySet="UserProfileDetails" />
       <End Role="UserProfilePicture" EntitySet="UserProfilePictures" />
     </AssociationSet>
+    <EntitySet Name="OTPVerifications" EntityType="ReshimgathiMatrimonyModel.OTPVerification" />
   </EntityContainer>
   <EntityType Name="Favourite">
     <Key>
@@ -260,4 +261,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="OTPVerification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OTP" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

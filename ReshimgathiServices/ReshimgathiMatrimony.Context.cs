@@ -34,6 +34,7 @@ namespace ReshimgathiServices
         public virtual DbSet<RequestContact> RequestContacts { get; set; }
         public virtual DbSet<UserProfileDetail> UserProfileDetails { get; set; }
         public virtual DbSet<UserProfilePicture> UserProfilePictures { get; set; }
+        public virtual DbSet<OTPVerification> OTPVerifications { get; set; }
     
         [DbFunction("ReshimgathiDBContext", "GetLoginDetails")]
         public virtual IQueryable<GetLoginDetails_Result> GetLoginDetails()

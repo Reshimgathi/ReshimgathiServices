@@ -17,6 +17,7 @@
         <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__PaymentIn__UserP__0662F0A3" />
         <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__RequestCo__Reque__1975C517" />
         <AssociationConnector Association="ReshimgathiMatrimonyModel.FK__UserProfi__UserP__12C8C788" />
+        <EntityTypeShape EntityType="ReshimgathiMatrimonyModel.OTPVerification" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
