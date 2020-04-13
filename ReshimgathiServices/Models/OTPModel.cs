@@ -36,7 +36,7 @@ namespace ReshimgathiServices.Models
         {
             using (ReshimgathiDBContext db = new ReshimgathiDBContext())
             {
-                var response = db.OTPVerifications.Select(x=> x.Type == req.mobile.ToString() &&
+                var response = db.OTPVerifications.Select(x => x.Type == req.mobile.ToString() &&
                                                               x.OTP == req.otp);
 
                 if (response != null)
